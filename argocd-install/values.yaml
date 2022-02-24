@@ -1,0 +1,107 @@
+argo-cd:
+  controller:
+    enableStatefulSet: true
+    metrics:
+      enabled: true
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 250m
+        memory: 256Mi
+
+  dex:
+    metrics:
+      enabled: true
+    resources:
+      limits:
+        cpu: 50m
+        memory: 64Mi
+      requests:
+        cpu: 10m
+        memory: 32Mi
+
+  redis-ha:
+    enabled: true
+    resources:
+      limits:
+        cpu: 200m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 64Mi
+    metrics:
+      enabled: true
+
+  repoServer:
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+    metrics:
+      enabled: true
+    resources:
+      limits:
+        cpu: 50m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 64Mi
+
+  server:
+    additionalApplications:
+      - name: argocd
+        namespace: argocd
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: argocd
+        source:
+          helm:
+            version: v3
+            valueFiles:
+              - values.yaml
+              - ../values.yaml
+          path: argocd-install/
+          repoURL: https://github.com/ag237/argocd.git
+          targetRevision: HEAD
+        syncPolicy:
+          syncOptions:
+          - CreateNamespace=true
+      - name: argocd-apps
+        namespace: argocd
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: argocd
+        source:
+          path: apps
+          repoURL: https://github.com/ag237/argocd.git
+          targetRevision: HEAD
+          directory:
+            recurse: true
+        syncPolicy:
+          automated:
+            selfHeal: true
+            prune: true
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+    configEnabled: true
+    config:
+      repositories: |
+        - type: git
+          url: https://github.com/ag237/argocd.git
+        - name: argo-helm
+          type: helm
+          url: https://argoproj.github.io/argo-helm
+
+    metrics:
+      enabled: true
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 50m
+        memory: 64Mi
