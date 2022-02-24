@@ -61,7 +61,6 @@ argo-cd:
             version: v3
             valueFiles:
               - values.yaml
-              - ../values.yaml
           path: argocd-install/
           repoURL: https://github.com/ag237/argocd.git
           targetRevision: HEAD
