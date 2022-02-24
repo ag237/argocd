@@ -57,7 +57,7 @@ argo-cd:
           server: https://kubernetes.default.svc
         project: default
         source:
-          path: argocd-install/
+          path: argocd-install
           repoURL: https://github.com/ag237/argocd.git
           targetRevision: HEAD
         syncPolicy:
