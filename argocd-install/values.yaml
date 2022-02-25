@@ -76,6 +76,22 @@ argo-cd:
           automated:
             prune: true
             selfHeal: true
+      - name: applicationsets
+        namespace: argocd
+        finalizers:
+          - resources-finalizer.argocd.argoproj.io
+        destination:
+          namespace: argocd
+          server: https://kubernetes.default.svc
+        project: default
+        source:
+          repoURL: https://github.com/ag237/argocd.git
+          targetRevision: HEAD
+          path: appsets
+        # syncPolicy:
+        #   automated:
+        #     prune: true
+        #     selfHeal: true
     autoscaling:
       enabled: true
       minReplicas: 2
