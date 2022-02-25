@@ -60,8 +60,10 @@ argo-cd:
           path: argocd-install
           repoURL: https://github.com/ag237/argocd.git
           targetRevision: HEAD
-      - name: apps
+      - name: applicationset-controller
         namespace: argocd
+        finalizers:
+          - resources-finalizer.argocd.argoproj.io
         destination:
           namespace: argocd
           server: https://kubernetes.default.svc
@@ -69,7 +71,11 @@ argo-cd:
         source:
           repoURL: https://github.com/ag237/argocd.git
           targetRevision: HEAD
-          path: apps
+          path: charts/argocd-applicationset
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
     autoscaling:
       enabled: true
       minReplicas: 2
