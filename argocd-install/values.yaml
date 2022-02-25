@@ -59,6 +59,10 @@ argo-cd:
         source:
           path: argocd-install
           repoURL: https://github.com/ag237/argocd.git
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
           targetRevision: HEAD
       - name: applicationset-controller
         namespace: argocd
