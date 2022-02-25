@@ -60,36 +60,19 @@ argo-cd:
           path: argocd-install
           repoURL: https://github.com/ag237/argocd.git
           targetRevision: HEAD
-        syncPolicy:
-          syncOptions:
-          - CreateNamespace=true
-      - name: argocd-apps
+      - name: apps
         namespace: argocd
         destination:
           namespace: argocd
           server: https://kubernetes.default.svc
         project: default
         source:
-          path: apps
           repoURL: https://github.com/ag237/argocd.git
           targetRevision: HEAD
-          directory:
-            recurse: true
-        syncPolicy:
-          automated:
-            selfHeal: true
-            prune: true
+          path: apps
     autoscaling:
       enabled: true
       minReplicas: 2
-    configEnabled: true
-    config:
-      repositories: |
-        - type: git
-          url: https://github.com/ag237/argocd.git
-        - name: argo-helm
-          type: helm
-          url: https://argoproj.github.io/argo-helm
 
     metrics:
       enabled: true
