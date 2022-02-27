@@ -1,0 +1,9 @@
+apiVersion: v2
+name: traefik
+description: traefik
+version: 10.14.2
+appVersion: 2.6.1
+dependencies:
+- name: traefik
+  version: 10.14.2
+  repository: https://helm.traefik.io/traefik
