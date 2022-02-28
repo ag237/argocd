@@ -1,0 +1,53 @@
+calibre:
+  envFrom:
+    - secretRef:
+        name: calibre-env
+  image:
+    tag: latest
+    pullPolicy: Always
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+        traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+      hosts:
+        - host: calibre.chowned.net
+          paths:
+            - path: /
+              pathType: Prefix
+  persistence:
+    rtorrent:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore/rtorrent
+      mountPath: /rtorrent
+    calibre:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore/calibre
+      mountPath: /datastore/calibre
+    calibre-config:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore/calibre/calibre-config
+      mountPath: /config
+  probes:
+    liveness:
+      enabled: false
+  podSecurityContext:
+    supplementalGroups:
+      - 100
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  service:
+    webserver:
+      enabled: true

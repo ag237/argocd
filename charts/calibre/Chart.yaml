@@ -1,0 +1,9 @@
+apiVersion: v2
+name: calibre
+description: calibre
+version: 5.2.0
+appVersion: version-v5.21.0
+dependencies:
+- name: calibre
+  version: 5.2.0
+  repository: https://k8s-at-home.com/charts/ 
