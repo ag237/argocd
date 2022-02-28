@@ -1,21 +1,4 @@
 traefik:
-  # additionalArguments: 
-    # - "--api.insecure=true"
-    # - "--accesslog.fields.headers.defaultmode=keep"
-    # - "--entryPoints.web.forwardedHeaders.trustedIPs=127.0.0.1/32,192.168.1.1/24"
-    # - "--entryPoints.websecure.forwardedHeaders.trustedIPs=127.0.0.1/32,192.168.1.1/24"
-    # - "--providers.file.directory=/config"
-    # - "--providers.file.watch=true"
-    # - "--providers.kubernetesingress.ingressclass=traefik"
-    # - "--providers.kubernetesingress.ingressendpoint.publishedservice=traefik/traefik"
-    # - "--metrics.prometheus=true"
-    # - "--metrics.prometheus.entryPoint=web"
-    # - "--certificatesresolvers.namecheap.acme.email=agentgreen@gmail.com"
-    # - "--certificatesresolvers.namecheap.acme.storage=/data/acme.json"
-    # - "--certificatesresolvers.namecheap.acme.caserver=https://acme-v02.api.letsencrypt.org./directory"
-    # - "--certificatesresolvers.namecheap.acme.dnschallenge.provider=namecheap"
-    # - "--certificatesresolvers.namecheap.acme.dnschallenge.delaybeforecheck=0"
-    # - "--certificatesresolvers.namecheap.acme.dnschallenge.resolvers=156.154.132.200:53,156.154.133.200:53"
   deployment:
     initContainers:
       # The "volume-permissions" init container is required if you run into permission issues.
@@ -32,9 +15,6 @@ traefik:
   podDisruptionBudget:
     enabled: true
     maxUnavailable: 1
-  # ingressClass:
-  #   enabled: true
-  #   isDefaultClass: true
   persistence:
     enabled: true
     path: /certs
