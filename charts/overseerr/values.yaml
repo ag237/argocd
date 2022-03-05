@@ -1,0 +1,35 @@
+overseerr:
+  image:
+    tag: latest
+    pullPolicy: Always
+  env:
+    TZ: America/New_York
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+      hosts:
+        - host: request.chowned.net
+          paths:
+            - path: /
+              pathType: Prefix
+  persistence:
+    config:
+      enabled: true
+      storageClass: "rook-ceph-block"
+    datastore:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore/
+      mountPath: /datastore
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
