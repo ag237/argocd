@@ -1,0 +1,50 @@
+tautulli:
+  # dnsConfig:
+  #   options:
+  #     - name: ndots
+  #       value: "1"
+  env:
+    TZ: America/New_York
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+        traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+      hosts:
+        - host: plexpy.chowned.net
+          paths:
+            - path: /
+              pathType: Prefix
+  persistence:
+    config:
+      enabled: true
+      storageClass: "rook-ceph-block"
+      size: 50Gi
+    # logs:
+    #   enabled: true
+    #   type: hostPath
+    #   hostPath: "/unraid/appdata/plexmediaserver/Library/Application Support/Plex Media Server/Logs/"
+    #   mountPath: /logs
+  # securityContext:
+  #     runAsUser: 99
+  #     runAsGroup: 100
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  # initContainers:
+  #   update-volume-permission:
+  #     image: busybox
+  #     command: ["sh", "-c", "chown -R 99:100 /config"]
+  #     volumeMounts:
+  #       - name: config
+  #       mountPath: /config
+  #     securityContext:
+  #       runAsUser: 0
