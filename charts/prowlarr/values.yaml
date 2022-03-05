@@ -1,0 +1,39 @@
+prowlarr:
+  env:
+    TZ: America/New_York
+  image:
+    tag: latest
+    pullPolicy: Always
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+        traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+      hosts:
+        - host: prowlarr.chowned.net
+          paths:
+            - path: /
+              pathType: Prefix
+  persistence:
+    config:
+      enabled: true
+      storageClass: "rook-ceph-block"
+    datastore:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore
+      mountPath: /datastore
+  probes:
+    liveness:
+      enabled: false
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
