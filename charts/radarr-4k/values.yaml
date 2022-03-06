@@ -18,6 +18,7 @@ radarr-4k:
           paths:
             - path: /
               pathType: Prefix
+  nameOverride: "radarr-4k"
   persistence:
     config:
       enabled: true
