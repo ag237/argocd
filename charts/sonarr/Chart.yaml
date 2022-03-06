@@ -1,0 +1,9 @@
+apiVersion: v2
+name: sonarr
+description: sonarr
+version: 16.0.1
+appVersion: v3.0.6.1342
+dependencies:
+- name: sonarr
+  version: 16.0.1
+  repository: https://k8s-at-home.com/charts/
