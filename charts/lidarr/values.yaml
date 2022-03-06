@@ -1,0 +1,58 @@
+lidarr:
+  # dnsConfig:
+  #   options:
+  #     - name: ndots
+  #       value: "1"
+  env:
+    TZ: America/New_York
+    # PUID: 99
+    # PGID: 100
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+        traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+      hosts:
+        - host: music.chowned.net
+          paths:
+            - path: /
+              pathType: Prefix
+  persistence:
+    config:
+      enabled: true
+      storageClass: "rook-ceph-block"
+      size: 100Gi
+    datastore:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore/
+      mountPath: /datastore
+  podSecurityContext:
+    supplementalGroups:
+      - 100
+  probes:
+    liveness:
+      enabled: false
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2048Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  # securityContext:
+  #     runAsUser: 99
+  #     runAsGroup: 100
+  # initContainers:
+  #   update-volume-permission:
+  #     image: busybox
+  #     command: ["sh", "-c", "chown -R 99:100 /config"]
+  #     volumeMounts:
+  #       - name: config
+  #       mountPath: /config
+  #     securityContext:
+  #       runAsUser: 0
