@@ -14,7 +14,7 @@ radarr-4k:
         traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
         traefik.ingress.kubernetes.io/router.middlewares: chowned@file
       hosts:
-        - host: radarr.chowned.net
+        - host: radarr-4k.chowned.net
           paths:
             - path: /
               pathType: Prefix
@@ -22,7 +22,6 @@ radarr-4k:
     config:
       enabled: true
       storageClass: "rook-ceph-block"
-      size: 50Gi
     datastore:
       enabled: true
       type: hostPath
@@ -37,16 +36,16 @@ radarr-4k:
   resources:
     limits:
       cpu: 1000m
-      memory: 2048Mi
+      memory: 512Mi
     requests:
       cpu: 100m
       memory: 256Mi
   # initContainers:
-  #   update-volume-permission:
-  #     image: busybox
-  #     command: ["sh", "-c", "chown -R 568:568 /config"]
-  #     volumeMounts:
-  #       - name: config
-  #         mountPath: /config
-  #     securityContext:
-  #       runAsUser: 0
+  # - name: update-volume-permission
+  #   image: busybox
+  #   command: ["sh", "-c", "chown -R 568:568 /config"]
+  #   volumeMounts:
+  #   - name: config
+  #     mountPath: /config
+  #   securityContext:
+  #     runAsUser: 0
