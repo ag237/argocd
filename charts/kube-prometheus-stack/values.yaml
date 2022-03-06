@@ -1,0 +1,111 @@
+kube-prometheus-stack:
+  alertmanager:
+    ingress:
+      enabled: true
+      hosts: 
+        - alertmanager-k8s.chowned.net
+      paths:
+      - /
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+    alertmanagerSpec:
+      useExistingSecret: true
+      configSecret: alertmanager-kube-prometheus-stack-alertmanager
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: rook-ceph-block
+            accessModes: ["ReadWriteOnce"]
+            resources:
+              requests:
+                storage: 50Gi
+            # selector:
+            #   matchLabels:
+            #     app: alertmanager
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 1024Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi 
+    externalUrl: alertmanager-k8s.chowned.net
+  grafana:
+    deploymentStrategy:
+      type: Recreate
+    enabled: true
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+      hosts:
+        - grafana-k8s.chowned.net
+      path: /
+    persistence:
+      enabled: true
+      storageClassName: rook-ceph-block
+      size: 50Gi
+      # selectorLabels:
+      #   app: grafana
+    plugins: 
+      - grafana-piechart-panel
+      - yesoreyeram-boomtable-panel
+    serviceMonitor:
+      enabled: false
+  nodeExporter:
+    serviceMonitor:
+      relabelings:
+      - sourceLabels: [__meta_kubernetes_pod_node_name]
+        separator: ;
+        regex: ^(.*)$
+        targetLabel: hostname
+        replacement: $1
+        action: replace
+  prometheusOperator:
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1024Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    configReloaderCpu: 500m
+    configReloaderMemory: 32Mi
+  prometheus:
+    ingress:
+      enabled: true
+      hosts:
+        - prometheus-k8s.chowned.net
+      paths:
+        - /
+      tls: []
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+    prometheusSpec:
+      additionalScrapeConfigsSecret:
+        enabled: true
+        name: prometheus-additional-scrape-configs
+        key: prometheus-additional-scrape-configs.yaml
+      externalUrl: "https://prometheus-k8s.chowned.net"
+      retention: 365d
+      serviceMonitorSelectorNilUsesHelmValues: false
+      storageSpec:
+        volumeClaimTemplate:
+          spec:
+            accessModes: ["ReadWriteOnce"]
+            storageClassName: rook-ceph-block
+            resources:
+              requests:
+                storage: 200Gi
+            # selector:
+            #   matchLabels:
+            #     app: prometheus
