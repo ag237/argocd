@@ -7,3 +7,4 @@ dependencies:
 - name: radarr
   version: 16.0.1
   repository: https://k8s-at-home.com/charts/
+  alias: radarr-4k
