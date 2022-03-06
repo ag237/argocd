@@ -1,0 +1,6 @@
+dependencies:
+- name: lidarr
+  repository: https://k8s-at-home.com/charts
+  version: 14.0.1
+digest: sha256:a39d5e940c42b03ffc7c34a65c522a92e3407beb47a4a79eef7caffb725ef801
+generated: "2022-03-06T09:24:55.077192241-05:00"
