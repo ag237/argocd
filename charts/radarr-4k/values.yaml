@@ -1,4 +1,4 @@
-radarr-4k:
+radarr:
   env:
     TZ: America/New_York
   image:
