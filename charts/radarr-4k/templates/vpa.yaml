@@ -1,0 +1,12 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: radarr-4k
+  namespace: radarr-4k
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind:       Deployment
+    name:       radarr-4k
+  updatePolicy:
+    updateMode: "Auto"
