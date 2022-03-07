@@ -1,0 +1,4 @@
+updater:
+  extraArgs:
+    v: 2
+    min-replicas: 1
