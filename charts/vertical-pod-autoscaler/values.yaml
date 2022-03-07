@@ -1,4 +1,5 @@
-updater:
-  extraArgs:
-    v: 2
-    min-replicas: 1
+vertical-pod-autoscaler:
+  updater:
+    extraArgs:
+      v: 2
+      min-replicas: 1
