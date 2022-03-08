@@ -1,5 +1,7 @@
 argo-cd:
   controller:
+    args:
+      repoServerTimeoutSeconds: "180"
     enableStatefulSet: true
     metrics:
       enabled: true
@@ -38,6 +40,8 @@ argo-cd:
     autoscaling:
       enabled: true
       minReplicas: 2
+      maxReplicas: 10
+      targetCPUUtilizationPercentage: 250
     metrics:
       enabled: true
     resources:
