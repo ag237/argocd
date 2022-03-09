@@ -1,15 +1,15 @@
 traefik:
   deployment:
     kind: Deployment
-    # initContainers:
-    #   # The "volume-permissions" init container is required if you run into permission issues.
-    #   # Related issue: https://github.com/containous/traefik/issues/6972
-    # - name: volume-permissions
-    #   image: busybox
-    #   command: ["sh", "-c", "chmod -Rv 600 /certs/*"]
-    #   volumeMounts:
-    #     - name: certs
-    #       mountPath: /certs
+    initContainers:
+      # The "volume-permissions" init container is required if you run into permission issues.
+      # Related issue: https://github.com/containous/traefik/issues/6972
+    - name: volume-permissions
+      image: busybox
+      command: ["sh", "-c", "chmod -Rv 600 /certs/*"]
+      volumeMounts:
+        - name: certs
+          mountPath: /certs
   envFrom:
     - secretRef:
         name: namecheap-creds
@@ -17,7 +17,7 @@ traefik:
     enabled: true
     maxUnavailable: 1
   persistence:
-    enabled: false
+    enabled: true
     path: /certs
     name: certs
   resources:
