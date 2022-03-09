@@ -17,6 +17,7 @@ traefik:
     enabled: true
     maxUnavailable: 1
   persistence:
+    storageClass: rook-ceph-block
     enabled: true
     path: /certs
     name: certs
