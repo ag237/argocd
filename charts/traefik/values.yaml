@@ -1,5 +1,6 @@
 traefik:
   deployment:
+    kind: DaemonSet
     initContainers:
       # The "volume-permissions" init container is required if you run into permission issues.
       # Related issue: https://github.com/containous/traefik/issues/6972
