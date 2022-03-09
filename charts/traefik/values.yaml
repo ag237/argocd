@@ -17,7 +17,7 @@ traefik:
     enabled: true
     maxUnavailable: 1
   persistence:
-    enabled: true
+    enabled: false
     path: /certs
     name: certs
   resources:
