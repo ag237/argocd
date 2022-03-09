@@ -58,10 +58,6 @@ kube-prometheus-stack:
       - yesoreyeram-boomtable-panel
     serviceMonitor:
       enabled: false
-  kubeControllerManager:
-    serviceMonitor:
-      https: true
-      insecureSkipVerify: true
   kubeEtcd:
     serviceMonitor:
       scheme: https
