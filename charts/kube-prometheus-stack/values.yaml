@@ -65,6 +65,10 @@ kube-prometheus-stack:
       caFile: /etc/prometheus/secrets/etcd-client-cert/etcd-ca
       certFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client
       keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
+  kubeProxy:
+    service:
+      selector:
+        component: kube-proxy
   nodeExporter:
     serviceMonitor:
       relabelings:
