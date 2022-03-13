@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-production
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: agentgreen@gmail.com
+    privateKeySecretRef:
+      name: letsencrypt-production-key
+    solvers:
+    - dns01:
+        cloudflare:
+          email: agentgreen@gmail.com
+          apiKeySecretRef:
+            name: cloudflare-api-key-secret
+            key: api-key
