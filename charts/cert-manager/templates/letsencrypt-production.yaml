@@ -13,6 +13,6 @@ spec:
     - dns01:
         cloudflare:
           email: agentgreen@gmail.com
-          apiKeySecretRef:
+          apiTokenSecretRef:
             name: cloudflare-api-token-secret
             key: api-token
