@@ -12,13 +12,14 @@ tautulli:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
         traefik.ingress.kubernetes.io/router.middlewares: chowned@file
       hosts:
         - host: plexpy.chowned.net
           paths:
             - path: /
               pathType: Prefix
+      tls:
+      - secretName: tautulli-cert
   persistence:
     config:
       enabled: true
