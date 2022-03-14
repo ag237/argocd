@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tautulli-cert
+  namespace: tautulli
+spec:
+  secretName: tautulli-cert
+  dnsNames:
+  - tautulli.chowned.net
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+    group: cert-manager.io
