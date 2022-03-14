@@ -10,7 +10,8 @@ kube-prometheus-stack:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
+      tls:
+      - secretName: alertmanager-cert
     alertmanagerSpec:
       useExistingSecret: true
       configSecret: alertmanager-kube-prometheus-stack-alertmanager
@@ -61,10 +62,11 @@ kube-prometheus-stack:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
       hosts:
         - grafana-k8s.chowned.net
       path: /
+      tls:
+      - secretName: grafana-cert
     persistence:
       enabled: true
       storageClassName: rook-ceph-block
@@ -113,12 +115,12 @@ kube-prometheus-stack:
         - prometheus-k8s.chowned.net
       paths:
         - /
-      tls: []
+      tls:
+      - secretName: prometheus-cert
       annotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.tls.certresolver: namecheap
     prometheusSpec:
       additionalScrapeConfigsSecret:
         enabled: true
