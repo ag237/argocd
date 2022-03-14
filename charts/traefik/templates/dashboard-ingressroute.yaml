@@ -15,4 +15,4 @@ spec:
         - name: api@internal
           kind: TraefikService
   tls:
-    certResolver: namecheap
+    secret: traefik-cert
