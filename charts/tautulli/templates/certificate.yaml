@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: tautulli-cert
   dnsNames:
-  - tautulli.chowned.net
+  - plexpy.chowned.net
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
