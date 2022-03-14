@@ -15,4 +15,4 @@ spec:
         - name: api@internal
           kind: TraefikService
   tls:
-    secret: traefik-cert
+    secretName: traefik-cert
