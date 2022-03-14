@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: alertmanager-cert
-  namespace: prometheus
+  namespace: kube-prometheus-stack
 spec:
   secretName: alertmanager-cert
   dnsNames:
@@ -16,7 +16,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: grafana-cert
-  namespace: prometheus
+  namespace: kube-prometheus-stack
 spec:
   secretName: grafana-cert
   dnsNames:
@@ -30,7 +30,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: prometheus-cert
-  namespace: prometheus
+  namespace: kube-prometheus-stack
 spec:
   secretName: prometheus-cert
   dnsNames:
