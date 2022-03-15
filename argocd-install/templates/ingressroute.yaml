@@ -18,6 +18,8 @@ spec:
     - kind: Rule
       match: Host(`argocd.chowned.net`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
+      middlewares:
+      - name: chowned@file
       services:
         - name: argocd-server
           port: 80
