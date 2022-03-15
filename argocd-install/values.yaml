@@ -103,7 +103,8 @@ argo-cd:
     autoscaling:
       enabled: true
       minReplicas: 2
-
+    extraArgs:
+    - --insecure
     metrics:
       enabled: true
     resources:
@@ -113,18 +114,3 @@ argo-cd:
       requests:
         cpu: 50m
         memory: 64Mi
-    # service:
-    #   type: LoadBalancer
-    #   loadBalancerIP: 192.168.1.55
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: traefik
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.middlewares: chowned@file
-      hosts:
-      - argocd.chowned.net
-      tls:
-      - secretName: argocd-cert
-        
