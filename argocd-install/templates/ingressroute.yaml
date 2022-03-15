@@ -10,6 +10,8 @@ spec:
     - kind: Rule
       match: Host(`argocd.chowned.net`)
       priority: 10
+      middlewares:
+      - name: chowned@file
       services:
         - name: argocd-server
           port: 80
