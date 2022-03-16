@@ -39,9 +39,6 @@ lidarr:
     liveness:
       enabled: false
   resources:
-    limits:
-      cpu: 2000m
-      memory: 2048Mi
     requests:
       cpu: 100m
       memory: 256Mi
