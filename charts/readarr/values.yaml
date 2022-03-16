@@ -34,9 +34,6 @@ readarr:
     supplementalGroups:
       - 100
   resources:
-    limits:
-      cpu: 1000m
-      memory: 2048Mi
     requests:
       cpu: 100m
       memory: 256Mi
