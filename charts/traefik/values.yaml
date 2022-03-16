@@ -1,6 +1,6 @@
 traefik:
   deployment:
-    kind: Daemonset
+    kind: Deployment
     # initContainers:
     #   # The "volume-permissions" init container is required if you run into permission issues.
     #   # Related issue: https://github.com/containous/traefik/issues/6972
@@ -28,7 +28,6 @@ traefik:
   service:
     spec:
       loadBalancerIP: "192.168.1.50"
-      externalTrafficPolicy: Local
   ports:
     web:
       redirectTo: websecure
