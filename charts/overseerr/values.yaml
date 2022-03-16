@@ -16,6 +16,8 @@ overseerr:
           paths:
             - path: /
               pathType: Prefix
+      tls:
+      - secretName: overseerr-cert
   persistence:
     config:
       enabled: true
