@@ -1,8 +1,4 @@
 overseerr:
-  dnsConfig:
-    options:
-      - name: ndots
-        value: "1"
   image:
     tag: latest
     pullPolicy: Always
