@@ -17,6 +17,8 @@ sonarr-4k:
           paths:
             - path: /
               pathType: Prefix
+      tls:
+      - secretName: sonarr-4k-cert
   nameOverride: sonarr-4k
   persistence:
     config:

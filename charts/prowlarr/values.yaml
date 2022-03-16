@@ -17,6 +17,8 @@ prowlarr:
           paths:
             - path: /
               pathType: Prefix
+      tls:
+      - secretName: prowlarr-cert
   persistence:
     config:
       enabled: true

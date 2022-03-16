@@ -17,6 +17,8 @@ readarr:
           paths:
             - path: /
               pathType: Prefix
+      tls:
+      - secretName: readarr-cert
   persistence:
     config:
       enabled: true
