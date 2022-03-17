@@ -1,6 +1,4 @@
 overseerr:
-  hostNetwork: true
-  dnsPolicy: ClusterFirstWithHostNet
   image:
     tag: latest
     pullPolicy: Always
