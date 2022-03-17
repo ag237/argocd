@@ -1,0 +1,35 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: rtorrent
+  name: rtorrent
+  namespace: traefik
+spec:
+  type: ExternalName
+  ports:
+    - name: rtorrent
+      port: 9080
+      targetPort: 9080
+  externalName: 192.168.1.22
+  selector:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/name: traefik
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rtorrent
+  namespace: traefik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`rt.chowned.net`)
+      kind: Rule
+      services:
+        - name: rtorrent
+          kind: Service
+          port: 9080
+  tls:
+    secretName: rtorrent-cert
