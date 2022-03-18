@@ -20,8 +20,8 @@ metadata:
 spec:
   secretName: wildcard-cert
   dnsNames:
-  - *.chowned.net
   - chowned.net
+  - '*.chowned.net'
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
