@@ -15,27 +15,23 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: rtorrent-cert
+  name: wildcard-cert
   namespace: traefik
 spec:
-  secretName: rtorrent-cert
+  secretName: wildcard-cert
   dnsNames:
-  - rt.chowned.net
+  - *.chowned.net
+  - chowned.net
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
     group: cert-manager.io
 ---
-apiVersion: cert-manager.io/v1
-kind: Certificate
+apiVersion: traefik.containo.us/v1alpha1
+kind: TLSStore
 metadata:
-  name: portainer-cert
+  name: default
   namespace: traefik
 spec:
-  secretName: portainer-cert
-  dnsNames:
-  - portainer.chowned.net
-  issuerRef:
-    name: letsencrypt-production
-    kind: ClusterIssuer
-    group: cert-manager.io
+  defaultCertificate:
+    secretName: wildcard-cert
