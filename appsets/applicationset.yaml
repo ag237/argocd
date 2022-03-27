@@ -9,8 +9,6 @@ spec:
       revision: HEAD
       directories:
       - path: charts/*
-      - path: charts/argocd-applicationset
-        exclude: true
   template:
     metadata:
       name: '{{path.basename}}'
