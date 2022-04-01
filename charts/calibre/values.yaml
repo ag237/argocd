@@ -3,8 +3,8 @@ calibre:
     - secretRef:
         name: calibre-env
   image:
-    tag: latest
-    pullPolicy: Always
+    repository: linuxserver/calibre
+    tag: version-v5.21.0
   ingress:
     main:
       enabled: true
