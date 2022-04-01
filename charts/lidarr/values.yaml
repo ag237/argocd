@@ -7,6 +7,10 @@ lidarr:
     TZ: America/New_York
     # PUID: 99
     # PGID: 100
+  image:
+    repository: ghcr.io/k8s-at-home/lidarr
+    tag: v1.0.0.2255
+
   ingress:
     main:
       enabled: true
