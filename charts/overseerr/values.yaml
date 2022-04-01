@@ -1,7 +1,7 @@
 overseerr:
   image:
-    tag: latest
-    pullPolicy: Always
+    repository: ghcr.io/sct/overseerr
+    tag: 1.26.1
   env:
     TZ: America/New_York
   ingress:

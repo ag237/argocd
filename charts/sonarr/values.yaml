@@ -2,8 +2,8 @@ sonarr:
   env:
     TZ: America/New_York
   image:
-    tag: latest
-    pullPolicy: Always
+    repository: ghcr.io/k8s-at-home/sonarr
+    tag: v3.0.6.1342
   ingress:
     main:
       enabled: true
