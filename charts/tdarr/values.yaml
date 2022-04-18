@@ -48,18 +48,20 @@ tdarr:
       memory: 256Mi
   service:
     main:
+      enabled: true
       ports:
         http:
           port: 8265
     server:
       enabled: true
       type: NodePort
-      nodePort: 31337
       ports:
         server:
           enabled: true
           protocol: TCP
           port: 8266
+          nodePort: 31337
+
 
 
 
