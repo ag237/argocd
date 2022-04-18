@@ -46,6 +46,13 @@ tdarr:
     requests:
       cpu: 100m
       memory: 256Mi
+  service:
+    main:
+      ports:
+        server:
+          type: NodePort
+          nodePort: 32337
+
   # initContainers:
   #   update-volume-permission:
   #     image: busybox
