@@ -1,8 +1,8 @@
 tdarr:
   env:
     TZ: America/New_York
-  image:
-    tag: 2.00.10
+  # image:
+  #   tag: 2.00.10
   ingress:
     main:
       enabled: true
