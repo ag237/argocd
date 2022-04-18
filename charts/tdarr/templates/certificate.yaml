@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tdarr-cert
+  namespace: tdarr
+spec:
+  secretName: tdarr-cert
+  dnsNames:
+  - tdarr.chowned.net
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+    group: cert-manager.io
