@@ -2,7 +2,6 @@ tdarr:
   env:
     TZ: America/New_York
   image:
-    repository: haveagitgat/tdarr
     tag: 2.00.10
   ingress:
     main:
