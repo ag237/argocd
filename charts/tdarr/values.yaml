@@ -35,7 +35,7 @@ tdarr:
       enabled: true
       type: hostPath
       hostPath: /nasv3/datastore
-      mountPath: /datastore
+      mountPath: /nasv3/datastore
   probes:
     liveness:
       enabled: false
