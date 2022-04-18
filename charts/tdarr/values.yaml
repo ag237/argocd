@@ -1,0 +1,57 @@
+tdarr:
+  env:
+    TZ: America/New_York
+  image:
+    repository: haveagitgat/tdarr
+    tag: 2.00.10
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+      hosts:
+        - host: tdarr.chowned.net
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+      - secretName: tdarr-cert
+  node:
+    enabled: false
+  persistence:
+    config:
+      enabled: true
+      storageClass: "rook-ceph-block"
+      size: 1Gi
+    data:
+      enabled: true
+      storageClass: "rook-ceph-block"
+      size: 10Gi
+      accessMode: ReadWriteOnce
+    datastore:
+      enabled: true
+      type: hostPath
+      hostPath: /nasv3/datastore
+      mountPath: /datastore
+  probes:
+    liveness:
+      enabled: false
+  podSecurityContext:
+    supplementalGroups:
+      - 100
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  # initContainers:
+  #   update-volume-permission:
+  #     image: busybox
+  #     command: ["sh", "-c", "chown -R 568:568 /config"]
+  #     volumeMounts:
+  #       - name: config
+  #         mountPath: /config
+  #     securityContext:
+  #       runAsUser: 0
