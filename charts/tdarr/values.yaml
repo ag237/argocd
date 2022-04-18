@@ -1,8 +1,9 @@
 tdarr:
   env:
     TZ: America/New_York
-  # image:
-  #   tag: 2.00.10
+  image:
+    repository: haveagitgat/tdarr
+    tag: 2.00.16.3
   ingress:
     main:
       enabled: true
