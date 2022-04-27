@@ -52,6 +52,7 @@ spec:
   monitoring:
     # requires Prometheus to be pre-installed
     enabled: false
+    rulesNamespace: rook-ceph
     # namespace to deploy prometheusRule in. If empty, namespace of the cluster will be used.
     # Recommended:
     # If you have a single rook-ceph cluster, set the rulesNamespace to the same namespace as the cluster or keep it empty.
