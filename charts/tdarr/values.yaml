@@ -3,7 +3,7 @@ tdarr:
     TZ: America/New_York
   image:
     repository: haveagitgat/tdarr
-    tag: 2.00.16.3
+    tag: 2.00.18.1
   ingress:
     main:
       enabled: true
