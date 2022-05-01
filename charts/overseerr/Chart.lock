@@ -1,6 +1,6 @@
 dependencies:
 - name: overseerr
   repository: https://k8s-at-home.com/charts/
-  version: 5.2.0
-digest: sha256:d44bfcf3e26ef7221baf080030684355867bddb563d0ec7e29e49ea171fc58ba
-generated: "2022-03-05T16:12:41.930246973-05:00"
+  version: 5.3.0
+digest: sha256:f15fe58b7a397660d684e2b28fac271360f292c8b68d86202b6458081df322a1
+generated: "2022-05-01T17:23:16.259337328Z"
