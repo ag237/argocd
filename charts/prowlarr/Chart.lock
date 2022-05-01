@@ -1,6 +1,6 @@
 dependencies:
 - name: prowlarr
   repository: https://k8s-at-home.com/charts/
-  version: 4.3.0
-digest: sha256:53019a5f2669c23bb88a1cdea0328a5635db96fd8050d707fd8b6afc51e08831
-generated: "2022-04-21T02:15:42.885558248Z"
+  version: 4.4.0
+digest: sha256:f795733d226d536e6a517476e5e1239f51742a539c26140bcce86e13e08bfb3f
+generated: "2022-05-01T17:23:53.322359392Z"
