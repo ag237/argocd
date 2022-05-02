@@ -1,6 +1,6 @@
 dependencies:
 - name: lidarr
   repository: https://k8s-at-home.com/charts
-  version: 14.1.1
-digest: sha256:4c843537fd75baafdabb0a39b8a45583a98fa71ece299af7d926ec0ce4bfeccf
-generated: "2022-05-01T20:24:14.415079151Z"
+  version: 14.1.2
+digest: sha256:f7a577958b1861346d1b5118e8f29c34d83bfb8774e0b86b9d5bcd00adf1c14d
+generated: "2022-05-02T11:56:13.414507833Z"
