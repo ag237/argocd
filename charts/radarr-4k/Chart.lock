@@ -1,6 +1,6 @@
 dependencies:
 - name: radarr
   repository: https://k8s-at-home.com/charts/
-  version: 16.2.1
-digest: sha256:b2db8504fb7685d6a8a9bd8219b1de567ac112676d1a7197cd1fba8af04b334b
-generated: "2022-05-01T20:25:21.685240116Z"
+  version: 16.2.2
+digest: sha256:91ce6ed6ef6b484df1a0f6879787f392cfc21c2df4a1029fd0a5fea0b8454f18
+generated: "2022-05-02T11:58:43.246244748Z"
