@@ -1,6 +1,6 @@
 dependencies:
 - name: tautulli
   repository: https://k8s-at-home.com/charts/
-  version: 11.3.0
-digest: sha256:614323a57f31d880d56d33f3ff194b42549f1527e99548772d839cf8491cbcce
-generated: "2022-05-01T17:28:17.093445561Z"
+  version: 11.3.1
+digest: sha256:0c80536eb067e53ca17e6e848076341f1654fcd9ad4083d140a78a15426ca796
+generated: "2022-05-02T12:01:53.995277098Z"
