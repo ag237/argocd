@@ -1,6 +1,6 @@
 dependencies:
 - name: calibre
   repository: https://k8s-at-home.com/charts/
-  version: 5.3.0
-digest: sha256:c065abb1ed8e10e16c3271c9f8f39c106282792b4fe3176f5aaad3547da364bb
-generated: "2022-05-01T17:22:12.185905263Z"
+  version: 5.3.1
+digest: sha256:36dc6b0059706fd4e49024a62258f8d49ad5f4ed9663fc15555ad81b74cfab25
+generated: "2022-05-02T11:55:43.044543165Z"
