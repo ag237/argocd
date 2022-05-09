@@ -5,5 +5,5 @@ version: 6.2.0
 appVersion: v0.1.0.715
 dependencies:
 - name: readarr
-  version: 6.3.1
+  version: 6.3.2
   repository: https://k8s-at-home.com/charts
