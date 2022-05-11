@@ -3,6 +3,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
+  "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true
