@@ -1,6 +1,6 @@
 dependencies:
 - name: traefik
   repository: https://helm.traefik.io/traefik
-  version: 10.22.0
-digest: sha256:beafaee65b539b6f9ee1eabfe45d3d2b3e2d233365ae704af741822b7e12521b
-generated: "2022-06-22T18:30:14.081596782Z"
+  version: 10.23.0
+digest: sha256:0d46c281bc40a8ade1650352771934b46d6278dbae0d5a6b6cc8a57f954d5dd5
+generated: "2022-06-27T15:34:54.954127449Z"
