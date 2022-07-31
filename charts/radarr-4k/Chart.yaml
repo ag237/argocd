@@ -5,6 +5,6 @@ version: 16.0.1
 appVersion: v3.2.2.5080
 dependencies:
 - name: radarr
-  version: 16.2.3
+  version: 16.3.0
   repository: https://k8s-at-home.com/charts/
   alias: radarr-4k
