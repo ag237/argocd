@@ -21,7 +21,7 @@ spec:
           image: rook/ceph:master
           command: ["/bin/bash"]
           args: ["-m", "-c", "/usr/local/bin/toolbox.sh"]
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           tty: true
           securityContext:
             runAsNonRoot: true
