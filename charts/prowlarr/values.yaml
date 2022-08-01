@@ -31,6 +31,11 @@ prowlarr:
           server: 192.168.1.22
           path: /datastore
       mountPath: /datastore
+  podSecurityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
   probes:
     liveness:
       enabled: false
