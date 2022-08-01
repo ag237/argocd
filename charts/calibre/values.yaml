@@ -23,18 +23,27 @@ calibre:
   persistence:
     rtorrent:
       enabled: true
-      type: hostPath
-      hostPath: /nasv3/datastore/rtorrent
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.22
+          path: /datastore/rtorrent
       mountPath: /rtorrent
     calibre:
       enabled: true
-      type: hostPath
-      hostPath: /nasv3/datastore/calibre
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.22
+          path: /datastore/calibre
       mountPath: /datastore/calibre
     calibre-config:
       enabled: true
-      type: hostPath
-      hostPath: /nasv3/datastore/calibre/calibre-config
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.22
+          path: /datastore/calibre/calibre-config
       mountPath: /config
   probes:
     liveness:
