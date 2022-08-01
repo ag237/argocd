@@ -33,9 +33,11 @@ tautulli:
     #   type: hostPath
     #   hostPath: "/unraid/appdata/plexmediaserver/Library/Application Support/Plex Media Server/Logs/"
     #   mountPath: /logs
-  # securityContext:
-  #     runAsUser: 99
-  #     runAsGroup: 100
+  podSecurityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
   resources:
     requests:
       cpu: 100m
