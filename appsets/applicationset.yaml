@@ -18,7 +18,7 @@ spec:
         repoURL: https://github.com/ag237/argocd.git
         targetRevision: HEAD
         path: '{{path}}'
-      syncPolicy: {}
+      syncPolicy:
         automated:
           prune: true
           selfHeal: true
