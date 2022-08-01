@@ -13,7 +13,7 @@ kube-prometheus-stack:
       tls:
       - secretName: alertmanager-cert
     alertmanagerSpec:
-      replicas: 0
+      replicas: 1
       useExistingSecret: true
       configSecret: alertmanager-kube-prometheus-stack-alertmanager
       storage:
@@ -79,13 +79,13 @@ kube-prometheus-stack:
       - yesoreyeram-boomtable-panel
     serviceMonitor:
       enabled: false
-  kubeEtcd:
-    serviceMonitor:
-      scheme: https
-      insecureSkipVerify: true
-      caFile: /etc/prometheus/secrets/etcd-client-cert/etcd-ca
-      certFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client
-      keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
+  # kubeEtcd:
+  #   serviceMonitor:
+  #     scheme: https
+  #     insecureSkipVerify: true
+  #     caFile: /etc/prometheus/secrets/etcd-client-cert/etcd-ca
+  #     certFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client
+  #     keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
   kubeProxy:
     service:
       selector:
@@ -130,8 +130,8 @@ kube-prometheus-stack:
       externalUrl: "https://prometheus-k8s.chowned.net"
       retention: 365d
       serviceMonitorSelectorNilUsesHelmValues: false
-      secrets:
-        - etcd-client-cert
+      # secrets:
+      #   - etcd-client-cert
       storageSpec:
         volumeClaimTemplate:
           spec:
