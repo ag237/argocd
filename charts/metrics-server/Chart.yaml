@@ -1,0 +1,9 @@
+apiVersion: v2
+name: metrics-server
+description: metrics-server
+version: v6.0.9
+appVersion: v0.6.1
+dependencies:
+- name: metrics-server
+  version: v6.0.9
+  repository: https://charts.bitnami.com/bitnami
