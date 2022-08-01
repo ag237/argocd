@@ -52,13 +52,13 @@ lidarr:
   # securityContext:
   #     runAsUser: 99
   #     runAsGroup: 100
-  initContainers:
-    update-volume-permission:
-      image: busybox
-      # command: ["sh", "-c", "chown -R 99:100 /config"]
-      command: ["sh", "-c", "sleep 600"]
-      volumeMounts:
-        - name: config
-          mountPath: /config
-      securityContext:
-        runAsUser: 0
+  # initContainers:
+  #   update-volume-permission:
+  #     image: busybox
+  #     # command: ["sh", "-c", "chown -R 99:100 /config"]
+  #     command: ["sh", "-c", "sleep 600"]
+  #     volumeMounts:
+  #       - name: config
+  #         mountPath: /config
+  #     securityContext:
+  #       runAsUser: 0
