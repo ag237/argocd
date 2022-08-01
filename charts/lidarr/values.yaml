@@ -49,6 +49,11 @@ lidarr:
     requests:
       cpu: 100m
       memory: 256Mi
+  podSecurityContext:
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
   # securityContext:
   #     runAsUser: 99
   #     runAsGroup: 100

@@ -36,8 +36,10 @@ readarr:
     liveness:
       enabled: false
   podSecurityContext:
-    supplementalGroups:
-      - 100
+    runAsUser: 568
+    runAsGroup: 568
+    fsGroup: 568
+    fsGroupChangePolicy: "OnRootMismatch"
   resources:
     requests:
       cpu: 100m
