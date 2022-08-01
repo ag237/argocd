@@ -26,8 +26,11 @@ readarr:
       size: 50Gi
     datastore:
       enabled: true
-      type: hostPath
-      hostPath: /nasv3/datastore
+      type: custom
+      volumeSpec:
+        nfs:
+          server: 192.168.1.22
+          path: /datastore
       mountPath: /datastore
   probes:
     liveness:
