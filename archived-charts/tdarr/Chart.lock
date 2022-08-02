@@ -1,6 +1,6 @@
 dependencies:
 - name: tdarr
   repository: https://k8s-at-home.com/charts/
-  version: 4.6.0
-digest: sha256:c6ab16171b327b679caa25b2f925bad88f2d1c64a96d3e56af1bbc3231afa742
-generated: "2022-07-31T20:24:31.144313572Z"
+  version: 4.6.1
+digest: sha256:2791ac2cb46cb5c3fea523ac4c8a1d06189a63c7d5a20de48d8ab2ac467433d9
+generated: "2022-08-02T14:03:14.11377425Z"
