@@ -6,5 +6,5 @@ rook-ceph:
     requests:
       cpu: 200m
       memory: 256Mi
-  crds:
-    enabled: false
+  monitoring:
+    enabled: true
