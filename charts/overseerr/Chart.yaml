@@ -5,5 +5,5 @@ version: 5.2.0
 appVersion: 1.26.1
 dependencies:
 - name: overseerr
-  version: 5.4.1
+  version: 5.4.2
   repository: https://k8s-at-home.com/charts/
