@@ -1,6 +1,6 @@
 dependencies:
 - name: sonarr
   repository: https://k8s-at-home.com/charts/
-  version: 16.3.1
-digest: sha256:2217a5bac7f914aa3bab630a3f1c13cbd8f322b4c076ed437c35126ca2eb4cd1
-generated: "2022-08-02T14:01:30.230256287Z"
+  version: 16.3.2
+digest: sha256:0a4eab7c88e068ff6014beb3f0f773f7c7f1eb42260c1bae13ec758b83f772d7
+generated: "2022-08-02T18:30:25.360715699Z"
