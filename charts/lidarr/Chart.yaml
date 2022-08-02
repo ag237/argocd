@@ -5,5 +5,5 @@ version: 14.0.1
 appVersion: v1.0.0.2255
 dependencies:
 - name: lidarr
-  version: 14.2.1
+  version: 14.2.2
   repository: https://k8s-at-home.com/charts
