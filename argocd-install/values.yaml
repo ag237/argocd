@@ -44,7 +44,8 @@ argo-cd:
       targetCPUUtilizationPercentage: 250
       targetMemoryUtilizationPercentage: 200
     env:
-    - ARGOCD_EXEC_TIMEOUT: 3m
+    - name: ARGOCD_EXEC_TIMEOUT
+      value: 3m
     metrics:
       enabled: true
     resources:
