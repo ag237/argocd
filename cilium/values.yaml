@@ -1,3 +1,5 @@
 cilium:
   ipam:
     mode: kubernetes
+  securityContext:
+    privileged: true
