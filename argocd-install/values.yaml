@@ -72,6 +72,20 @@ argo-cd:
           automated:
             prune: true
             selfHeal: true
+      - name: cilium
+        namespace: argocd
+        destination:
+          namespace: kube-system
+          server: https://kubernetes.default.svc
+        project: default
+        source:
+          path: cilium
+          repoURL: https://github.com/ag237/argocd.git
+          targetRevision: HEAD
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
       - name: applicationsets
         namespace: argocd
         finalizers:
