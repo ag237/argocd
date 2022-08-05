@@ -10,7 +10,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   tls:
-     secretName: "rook-dashboard-cert"
+     - secretName: "rook-dashboard-cert"
   rules:
   - host: rook-dashboard.chowned.net
     http:
