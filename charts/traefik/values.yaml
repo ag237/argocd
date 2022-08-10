@@ -32,6 +32,8 @@ traefik:
   ports:
     web:
       redirectTo: websecure
+    metrics:
+      expose: true
   ingressRoute:
     dashboard:
       enabled: false
