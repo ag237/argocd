@@ -61,6 +61,10 @@ kube-prometheus-stack:
           datasource: Prometheus
           gnetId: 2842
           revision: 1
+        traefik:
+          datasource: Prometheus
+          gnetId: 11462
+          revision: 1
     ingress:
       enabled: true
       annotations:
