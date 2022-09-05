@@ -2,7 +2,7 @@ prowlarr:
   env:
     TZ: America/New_York
   image:
-    repository: ghcr.io/k8s-at-home/prowlarr
+    repository: ghcr.io/linuxserver/prowlarr
     tag: develop
   ingress:
     main:
@@ -44,7 +44,7 @@ prowlarr:
       cpu: 100m
       memory: 256Mi
   initContainers:
-    - name: update-volume-permission
+    update-volume-permission:
       image: busybox
       command: ["sh", "-c", "chown -R 1000:1000 /config"]
       volumeMounts:
