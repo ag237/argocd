@@ -1,6 +1,8 @@
 prowlarr:
   env:
     TZ: America/New_York
+    PUID=1000
+    PGID=1000
   image:
     repository: ghcr.io/linuxserver/prowlarr
     tag: develop
