@@ -1,7 +1,7 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  name: config-yml
+  name: pmm-config
   namespace: plex-media-manager
 spec:
   encryptedData:
@@ -9,6 +9,6 @@ spec:
   template:
     data: null
     metadata:
-      name: config-yml
+      name: pmm-config
       namespace: plex-media-manager
 
