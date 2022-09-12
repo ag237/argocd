@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: plex-media-manager
-  namespace: plex-media-manager
+  name: plex-meta-manager
+  namespace: plex-meta-manager
 spec:
   schedule: "0 0 * * *"
   successfulJobsHistoryLimit: 3
@@ -17,7 +17,7 @@ spec:
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
           containers:
-            - name: plex-media-manager
+            - name: plex-meta-manager
               image: meisnate12/plex-meta-manager:latest
               imagePullPolicy: IfNotPresent
               args: [ "--run", "--read-only-config" ]
@@ -43,7 +43,7 @@ spec:
           volumes:
             - name: config
               persistentVolumeClaim:
-                claimName: plex-media-manager
+                claimName: plex-meta-manager
             - name: pmm-config
               secret:
                 secretName: pmm-config
