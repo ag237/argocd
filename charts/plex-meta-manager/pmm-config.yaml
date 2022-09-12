@@ -10,7 +10,6 @@ spec:
   template:
     data: null
     metadata:
-      creationTimestamp: null
       name: pmm-config
       namespace: plex-meta-manager
 
