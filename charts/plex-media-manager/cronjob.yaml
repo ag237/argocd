@@ -5,6 +5,8 @@ metadata:
   namespace: plex-media-manager
 spec:
   schedule: "0 0 * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
   jobTemplate:
     spec:
       template:
