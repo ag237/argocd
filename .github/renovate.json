@@ -14,5 +14,8 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true
     }
-  ]
+  ],
+  "kubernetes": {
+    "fileMatch": ["\\.yaml$"]
+  }
 }
