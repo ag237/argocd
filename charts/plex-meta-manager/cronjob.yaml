@@ -18,13 +18,13 @@ spec:
             fsGroupChangePolicy: "OnRootMismatch"
           containers:
             - name: plex-meta-manager
-              image: meisnate12/plex-meta-manager:latest
+              image: meisnate12/plex-meta-manager:1.17.3
               imagePullPolicy: IfNotPresent
               args: [ "--run", "--read-only-config" ]
               resources:
                 limits:
                   cpu: 100m
-                  memory: 256Mi
+                  memory: 1024Mi
                 requests:
                   cpu: 100m
                   memory: 125Mi
