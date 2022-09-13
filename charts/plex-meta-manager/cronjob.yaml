@@ -35,11 +35,11 @@ spec:
                   mountPath: /config/config.yml
                   subPath: config.yml
                 - name: movie-config
-                  mountPath: /config/movies.yaml
-                  subPath: movies.yaml
+                  mountPath: /config/movie-config.yml
+                  subPath: movie-config.yml
                 - name: kids-movie-config
-                  mountPath: /config/kids-movie-config.yaml
-                  subPath: kids-movie-config.yaml
+                  mountPath: /config/kids-movie-config.yml
+                  subPath: kids-movie-config.yml
           volumes:
             - name: config
               persistentVolumeClaim:
