@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: kids-movie-config
 data:
-  kids-movie-config.yaml: |
+  kids-movie-config.yml: |
     templates:
       Chart:
         sort_title: +1_<<num>><<collection_name>>
