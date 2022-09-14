@@ -1,4 +1,7 @@
 cilium:
+  hubble:
+    ui:
+      enabled: true
   ipam:
     mode: kubernetes
   prometheus:
