@@ -1,5 +1,10 @@
 cilium:
   ipam:
     mode: kubernetes
+  prometheus:
+    enabled: true
+    serviceMonitor:
+      enabled: true
   securityContext:
     privileged: true
+  
