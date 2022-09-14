@@ -86,18 +86,7 @@ kube-prometheus-stack:
       - grafana-piechart-panel
       - yesoreyeram-boomtable-panel
     serviceMonitor:
-      enabled: false
-  # kubeEtcd:
-  #   serviceMonitor:
-  #     scheme: https
-  #     insecureSkipVerify: true
-  #     caFile: /etc/prometheus/secrets/etcd-client-cert/etcd-ca
-  #     certFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client
-  #     keyFile: /etc/prometheus/secrets/etcd-client-cert/etcd-client-key
-  kubeProxy:
-    service:
-      selector:
-        component: kube-proxy
+      enabled: true
   nodeExporter:
     serviceMonitor:
       relabelings:
