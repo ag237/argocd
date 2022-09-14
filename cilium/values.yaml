@@ -1,5 +1,7 @@
 cilium:
   hubble:
+    relay:
+      enabled: true
     ui:
       enabled: true
   ipam:
