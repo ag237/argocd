@@ -96,6 +96,26 @@ kube-prometheus-stack:
         targetLabel: hostname
         replacement: $1
         action: replace
+  kubeControllerManager:
+    serviceMonitor:
+      https: true
+      insecureSkipVerify: true
+    service:
+      port: 10257
+      targetPort: 10257
+      selector:
+        k8s-app: kube-controller-manager
+        tier: control-plane
+  kubeScheduler:
+    serviceMonitor:
+      https: true
+      insecureSkipVerify: true
+    service:
+      port: 10259
+      targetPort: 10259
+      selector:
+        k8s-app: kube-scheduler
+        tier: control-plane
   prometheusOperator:
     resources:
       limits:
