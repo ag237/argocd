@@ -29,11 +29,10 @@ kube-prometheus-stack:
             #     app: alertmanager
       resources:
         limits:
-          cpu: 1000m
           memory: 1024Mi
         requests:
           cpu: 100m
-          memory: 100Mi 
+          memory: 1024Mi 
     externalUrl: alertmanager-k8s.chowned.net
   grafana:
     deploymentStrategy:
@@ -119,11 +118,10 @@ kube-prometheus-stack:
   prometheusOperator:
     resources:
       limits:
-        cpu: 1000m
         memory: 1024Mi
       requests:
         cpu: 100m
-        memory: 100Mi
+        memory: 1024Mi
     configReloaderCpu: 500m
     configReloaderMemory: 32Mi
   prometheus:
