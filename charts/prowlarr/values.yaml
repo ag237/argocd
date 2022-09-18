@@ -3,7 +3,7 @@ prowlarr:
     TZ: America/New_York
   image:
     repository: ghcr.io/onedr0p/prowlarr-develop
-    tag: 0.4.5.1960
+    tag: 0.4.6.1969
   ingress:
     main:
       enabled: true
