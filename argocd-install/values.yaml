@@ -60,6 +60,8 @@ argo-cd:
     additionalApplications:
       - name: argocd
         namespace: argocd
+        additionalAnnotations:
+          "helm.sh/resource-policy": keep
         destination:
           namespace: argocd
           server: https://kubernetes.default.svc
@@ -74,6 +76,8 @@ argo-cd:
             selfHeal: true
       - name: cilium
         namespace: argocd
+        additionalAnnotations:
+          "helm.sh/resource-policy": keep
         destination:
           namespace: kube-system
           server: https://kubernetes.default.svc
@@ -88,6 +92,8 @@ argo-cd:
             selfHeal: true
       - name: applicationsets
         namespace: argocd
+        additionalAnnotations:
+          "helm.sh/resource-policy": keep
         finalizers:
           - resources-finalizer.argocd.argoproj.io
         destination:
