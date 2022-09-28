@@ -57,57 +57,6 @@ argo-cd:
         memory: 64Mi
 
   server:
-    additionalApplications:
-      - name: argocd
-        namespace: argocd
-        additionalAnnotations:
-          "helm.sh/resource-policy": keep
-        destination:
-          namespace: argocd
-          server: https://kubernetes.default.svc
-        project: default
-        source:
-          path: argocd-install
-          repoURL: https://github.com/ag237/argocd.git
-          targetRevision: HEAD
-        syncPolicy:
-          automated:
-            prune: true
-            selfHeal: true
-      - name: cilium
-        namespace: argocd
-        additionalAnnotations:
-          "helm.sh/resource-policy": keep
-        destination:
-          namespace: kube-system
-          server: https://kubernetes.default.svc
-        project: default
-        source:
-          path: cilium
-          repoURL: https://github.com/ag237/argocd.git
-          targetRevision: HEAD
-        syncPolicy:
-          automated:
-            prune: true
-            selfHeal: true
-      - name: applicationsets
-        namespace: argocd
-        additionalAnnotations:
-          "helm.sh/resource-policy": keep
-        finalizers:
-          - resources-finalizer.argocd.argoproj.io
-        destination:
-          namespace: argocd
-          server: https://kubernetes.default.svc
-        project: default
-        source:
-          repoURL: https://github.com/ag237/argocd.git
-          targetRevision: HEAD
-          path: appsets
-        syncPolicy:
-          automated:
-            prune: true
-            selfHeal: true
     autoscaling:
       enabled: true
       minReplicas: 2
