@@ -16,6 +16,7 @@ spec:
       values: |
         prometheus:
           serviceAccount: kube-prometheus-stack-prometheus
+          namespace: kube-prometheus-stack
           serviceMonitor:
             enabled: true
           prometheusRule:
