@@ -1,0 +1,200 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph-cluster
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://charts.rook.io/release'
+    targetRevision: v1.10.2
+    helm:
+      values: |
+        toolbox:
+          enabled: true
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+        monitoring:
+          enabled: true
+          createPrometheusRules: true
+        cephClusterSpec:
+          cephVersion:
+            image: quay.io/ceph/ceph:v17.2.3
+            allowUnsupported: false
+          dataDirHostPath: /var/lib/rook
+          skipUpgradeChecks: false
+          continueUpgradeAfterChecksEvenIfNotHealthy: false
+          waitTimeoutForHealthyOSDInMinutes: 10
+          mon:
+            count: 3
+            allowMultiplePerNode: false
+          mgr:
+            count: 2
+            allowMultiplePerNode: false
+            modules:
+              - name: pg_autoscaler
+                enabled: true
+          dashboard:
+            enabled: true
+            ssl: true
+          crashCollector:
+            disable: false
+          cleanupPolicy:
+            confirmation: ""
+            sanitizeDisks:
+              method: quick
+              dataSource: zero
+              iteration: 1
+            allowUninstallWithVolumes: false
+          resources:
+            mgr:
+              limits:
+                cpu: "1000m"
+                memory: "1Gi"
+              requests:
+                cpu: "500m"
+                memory: "512Mi"
+            mon:
+              limits:
+                cpu: "2000m"
+                memory: "2Gi"
+              requests:
+                cpu: "1000m"
+                memory: "1Gi"
+            osd:
+              limits:
+                cpu: "2000m"
+                memory: "4Gi"
+              requests:
+                cpu: "1000m"
+                memory: "4Gi"
+            prepareosd:
+              limits:
+                cpu: "500m"
+                memory: "400Mi"
+              requests:
+                cpu: "500m"
+                memory: "50Mi"
+            mgr-sidecar:
+              limits:
+                cpu: "500m"
+                memory: "100Mi"
+              requests:
+                cpu: "100m"
+                memory: "40Mi"
+            crashcollector:
+              limits:
+                cpu: "500m"
+                memory: "60Mi"
+              requests:
+                cpu: "100m"
+                memory: "60Mi"
+            logcollector:
+              limits:
+                cpu: "500m"
+                memory: "1Gi"
+              requests:
+                cpu: "100m"
+                memory: "100Mi"
+            cleanup:
+              limits:
+                cpu: "500m"
+                memory: "1Gi"
+              requests:
+                cpu: "500m"
+                memory: "100Mi"
+          removeOSDsIfOutAndSafeToRemove: false
+          priorityClassNames:
+            mon: system-node-critical
+            osd: system-node-critical
+            mgr: system-cluster-critical
+          storage: # cluster level storage configuration and selection
+            useAllNodes: true
+            useAllDevices: true
+          disruptionManagement:
+            managePodBudgets: true
+            osdMaintenanceTimeout: 30
+            pgHealthCheckTimeout: 0
+            manageMachineDisruptionBudgets: false
+            machineDisruptionBudgetNamespace: openshift-machine-api
+          healthCheck:
+            daemonHealth:
+              mon:
+                disabled: false
+                interval: 45s
+              osd:
+                disabled: false
+                interval: 60s
+              status:
+                disabled: false
+                interval: 60s
+            livenessProbe:
+              mon:
+                disabled: false
+              mgr:
+                disabled: false
+              osd:
+                disabled: false
+        ingress:
+          dashboard: {}
+            # annotations:
+            #   external-dns.alpha.kubernetes.io/hostname: dashboard.example.com
+            #   nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
+            #   kubernetes.io/ingress.class: nginx
+            # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
+            #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            #   nginx.ingress.kubernetes.io/server-snippet: |
+            #     proxy_ssl_verify off;
+            # host:
+            #   name: dashboard.example.com
+            #   path: "/ceph-dashboard(/|$)(.*)"
+            # tls:
+            # - hosts:
+            #     - dashboard.example.com
+            #   secretName: testsecret-tls
+            ## Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
+            ## to set the ingress class
+            # ingressClassName: nginx
+        cephBlockPools:
+          - name: rook-ceph-block
+            spec:
+              failureDomain: host
+              replicated:
+                size: 3
+            storageClass:
+              enabled: true
+              name: rook-ceph-block
+              isDefault: true
+              reclaimPolicy: Retain
+              allowVolumeExpansion: true
+              mountOptions: []
+              parameters:
+                imageFormat: "2"
+                imageFeatures: layering
+                csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/provisioner-secret-namespace: rook-ceph
+                csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/controller-expand-secret-namespace: rook-ceph
+                csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+                csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
+                csi.storage.k8s.io/fstype: ext4
+        cephObjectStores: {}
+    chart: rook-ceph-cluster
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: rook-ceph
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
