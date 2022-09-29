@@ -15,6 +15,7 @@ spec:
     helm:
       values: |
         prometheus:
+          serviceAccount: kube-prometheus-stack-prometheus
           serviceMonitor:
             enabled: true
           prometheusRule:
