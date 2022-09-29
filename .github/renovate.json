@@ -18,5 +18,8 @@
   ],
   "kubernetes": {
     "fileMatch": ["\\.yaml$"]
+  },
+  "argocd": {
+    "fileMatch": ["applications/.+\\.yaml$"]
   }
 }
