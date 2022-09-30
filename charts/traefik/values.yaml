@@ -1,26 +1,12 @@
 traefik:
   deployment:
     kind: DaemonSet
-    # initContainers:
-    #   # The "volume-permissions" init container is required if you run into permission issues.
-    #   # Related issue: https://github.com/containous/traefik/issues/6972
-    # - name: volume-permissions
-    #   image: busybox
-    #   command: ["sh", "-c", "chmod -Rv 600 /certs/*"]
-    #   volumeMounts:
-    #     - name: certs
-    #       mountPath: /certs
   envFrom:
     - secretRef:
         name: namecheap-creds
   podDisruptionBudget:
     enabled: true
     maxUnavailable: 1
-  # persistence:
-  #   storageClass: rook-ceph-block
-  #   enabled: true
-  #   path: /certs
-  #   name: certs
   resources:
     requests:
       cpu: "100m"
@@ -37,19 +23,6 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: false
-  # autoscaling:
-  #   enabled: false
-  #   minReplicas: 1
-  #   maxReplicas: 10
-  #   metrics:
-  #   - type: Resource
-  #     resource:
-  #       name: cpu
-  #       targetAverageUtilization: 300
-  #   - type: Resource
-  #     resource:
-  #       name: memory
-  #       targetAverageUtilization: 150
   logs:
     access:
       enabled: true
