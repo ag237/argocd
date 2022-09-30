@@ -65,7 +65,7 @@ spec:
         #         mountPath: /config
         #     securityContext:
         #       runAsUser: 0
-    chart: radarr-4k
+    chart: radarr
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: radarr-4k
