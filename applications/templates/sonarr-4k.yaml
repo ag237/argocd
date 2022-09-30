@@ -59,7 +59,7 @@ spec:
     chart: sonarr-4k
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: sonarr-4k
+    namespace: sonarr
   syncPolicy:
     automated:
       selfHeal: true
