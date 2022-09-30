@@ -18,7 +18,6 @@ spec:
           enabled: true
           resources:
             limits:
-              cpu: "500m"
               memory: "1Gi"
             requests:
               cpu: "100m"
@@ -58,60 +57,52 @@ spec:
           resources:
             mgr:
               limits:
-                cpu: "1000m"
                 memory: "1Gi"
               requests:
                 cpu: "500m"
-                memory: "512Mi"
+                memory: "1Gi"
             mon:
               limits:
-                cpu: "2000m"
                 memory: "2Gi"
               requests:
                 cpu: "1000m"
-                memory: "1Gi"
+                memory: "2Gi"
             osd:
               limits:
-                cpu: "2000m"
                 memory: "4Gi"
               requests:
                 cpu: "1000m"
                 memory: "4Gi"
             prepareosd:
               limits:
-                cpu: "500m"
                 memory: "400Mi"
               requests:
                 cpu: "500m"
-                memory: "50Mi"
+                memory: "400Mi"
             mgr-sidecar:
               limits:
-                cpu: "500m"
                 memory: "100Mi"
               requests:
                 cpu: "100m"
-                memory: "40Mi"
+                memory: "100Mi"
             crashcollector:
               limits:
-                cpu: "500m"
                 memory: "60Mi"
               requests:
                 cpu: "100m"
                 memory: "60Mi"
             logcollector:
               limits:
-                cpu: "500m"
                 memory: "1Gi"
               requests:
                 cpu: "100m"
-                memory: "100Mi"
+                memory: "1Gi"
             cleanup:
               limits:
-                cpu: "500m"
                 memory: "1Gi"
               requests:
                 cpu: "500m"
-                memory: "100Mi"
+                memory: "1Gi"
           removeOSDsIfOutAndSafeToRemove: false
           priorityClassNames:
             mon: system-node-critical
@@ -188,6 +179,7 @@ spec:
                 csi.storage.k8s.io/node-stage-secret-namespace: rook-ceph
                 csi.storage.k8s.io/fstype: ext4
         cephObjectStores: {}
+        cephFileSystems: {}
     chart: rook-ceph-cluster
   destination:
     server: 'https://kubernetes.default.svc'
