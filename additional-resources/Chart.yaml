@@ -1,5 +1,5 @@
 apiVersion: v2
-name: bootstrap-resources
+name: application-resources
 description: Extra resources for applications that can't be applied at bootstrap
 type: application
 version: 0.1.0
