@@ -1,7 +1,6 @@
 apiVersion: v2
-name: applications
-description: Base applications
-
+name: bootstrap-applications
+description: Bootstrap applications
 type: application
 version: 0.1.0
 appVersion: "0.1.0"
