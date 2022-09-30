@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: overseerr
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://k8s-at-home.com/charts/'
+    targetRevision: 5.4.2
+    helm:
+      values: |
+        image:
+          repository: ghcr.io/sct/overseerr
+          tag: 1.30.0
+        env:
+          TZ: America/New_York
+        ingress:
+          main:
+            enabled: true
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+            hosts:
+              - host: request.chowned.net
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls: {}
+        persistence:
+          config:
+            enabled: true
+            storageClass: "rook-ceph-block"
+          datastore:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.22
+                path: /datastore/
+            mountPath: /datastore
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+    chart: overseerr
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: overseerr
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
