@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: movie-config
+  namespace: plex-meta-manager
 data:
   movie-config.yml: |
     templates:
