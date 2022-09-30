@@ -1,0 +1,175 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://prometheus-community.github.io/helm-charts'
+    targetRevision: 40.2.0
+    helm:
+      values: |
+        alertmanager:
+          ingress:
+            enabled: true
+            hosts: 
+              - alertmanager-k8s.chowned.net
+            paths:
+            - /
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+            tls:
+            - secretName: alertmanager-cert
+          alertmanagerSpec:
+            replicas: 1
+            useExistingSecret: true
+            configSecret: alertmanager-kube-prometheus-stack-alertmanager
+            storage:
+              volumeClaimTemplate:
+                spec:
+                  storageClassName: rook-ceph-block
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                    requests:
+                      storage: 50Gi
+            resources:
+              limits:
+                memory: 1024Mi
+              requests:
+                cpu: 100m
+                memory: 1024Mi 
+          externalUrl: alertmanager-k8s.chowned.net
+        grafana:
+          deploymentStrategy:
+            type: Recreate
+          enabled: true
+          dashboardProviders:
+            dashboardproviders.yaml:
+              apiVersion: 1
+              providers:
+              - name: 'default'
+                orgId: 1
+                folder: ''
+                type: file
+                disableDeletion: false
+                editable: true
+                options:
+                  path: /var/lib/grafana/dashboards/default
+          dashboards:
+            default:
+              storj:
+                datasource: Prometheus
+                gnetId: 13810
+                revision: 1
+              ceph:
+                datasource: Prometheus
+                gnetId: 2842
+                revision: 1
+              traefik:
+                datasource: Prometheus
+                gnetId: 11462
+                revision: 1
+          ingress:
+            enabled: true
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+            hosts:
+              - grafana-k8s.chowned.net
+            path: /
+            tls:
+            - secretName: grafana-cert
+          persistence:
+            enabled: true
+            storageClassName: rook-ceph-block
+            size: 50Gi
+          plugins: 
+            - grafana-piechart-panel
+            - yesoreyeram-boomtable-panel
+          serviceMonitor:
+            enabled: true
+        nodeExporter:
+          serviceMonitor:
+            relabelings:
+            - sourceLabels: [__meta_kubernetes_pod_node_name]
+              separator: ;
+              regex: ^(.*)$
+              targetLabel: hostname
+              replacement: $1
+              action: replace
+        kubeControllerManager:
+          serviceMonitor:
+            https: true
+            insecureSkipVerify: true
+          service:
+            port: 10257
+            targetPort: 10257
+            selector:
+              k8s-app: kube-controller-manager
+              tier: control-plane
+        kubeScheduler:
+          serviceMonitor:
+            https: true
+            insecureSkipVerify: true
+          service:
+            port: 10259
+            targetPort: 10259
+            selector:
+              k8s-app: kube-scheduler
+              tier: control-plane
+        prometheusOperator:
+          resources:
+            limits:
+              memory: 1024Mi
+            requests:
+              cpu: 100m
+              memory: 1024Mi
+          configReloaderCpu: 500m
+          configReloaderMemory: 32Mi
+        prometheus:
+          ingress:
+            enabled: true
+            hosts:
+              - prometheus-k8s.chowned.net
+            paths:
+              - /
+            tls:
+            - secretName: prometheus-cert
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+          prometheusSpec:
+            additionalScrapeConfigsSecret:
+              enabled: true
+              name: prometheus-additional-scrape-configs
+              key: prometheus-additional-scrape-configs.yaml
+            externalUrl: "https://prometheus-k8s.chowned.net"
+            retention: 365d
+            serviceMonitorSelectorNilUsesHelmValues: false
+            storageSpec:
+              volumeClaimTemplate:
+                spec:
+                  accessModes: ["ReadWriteOnce"]
+                  storageClassName: rook-ceph-block
+                  resources:
+                    requests:
+                      storage: 200Gi
+    chart: kube-prometheus-stack
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-prometheus-stack
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
