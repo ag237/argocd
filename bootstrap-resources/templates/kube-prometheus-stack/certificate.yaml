@@ -1,0 +1,41 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: alertmanager-cert
+  namespace: kube-prometheus-stack
+spec:
+  secretName: alertmanager-cert
+  dnsNames:
+  - alertmanager-k8s.chowned.net
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-cert
+  namespace: kube-prometheus-stack
+spec:
+  secretName: grafana-cert
+  dnsNames:
+  - grafana-k8s.chowned.net
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+    group: cert-manager.io
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: prometheus-cert
+  namespace: kube-prometheus-stack
+spec:
+  secretName: prometheus-cert
+  dnsNames:
+  - prometheus-k8s.chowned.net
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+    group: cert-manager.io
