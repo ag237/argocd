@@ -56,10 +56,10 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
-    chart: sonarr-4k
+    chart: sonarr
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: sonarr
+    namespace: sonarr-4k
   syncPolicy:
     automated:
       selfHeal: true
