@@ -1,0 +1,78 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radarr
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://k8s-at-home.com/charts/'
+    targetRevision: 16.3.2
+    helm:
+      values: |
+        env:
+          TZ: America/New_York
+        image:
+          repository: ghcr.io/onedr0p/radarr
+          tag: 4.2.4.6635
+        ingress:
+          main:
+            enabled: true
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+              traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+            hosts:
+              - host: radarr.chowned.net
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls:
+            - secretName: radarr-cert
+        persistence:
+          config:
+            enabled: true
+            storageClass: "rook-ceph-block"
+            size: 50Gi
+          datastore:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.22
+                path: /datastore
+            mountPath: /datastore
+        probes:
+          liveness:
+            enabled: false
+        podSecurityContext:
+          runAsUser: 568
+          runAsGroup: 568
+          fsGroup: 568
+          fsGroupChangePolicy: "OnRootMismatch"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        # initContainers:
+        #   update-volume-permission:
+        #     image: busybox
+        #     command: ["sh", "-c", "chown -R 568:568 /config"]
+        #     volumeMounts:
+        #       - name: config
+        #         mountPath: /config
+        #     securityContext:
+        #       runAsUser: 0
+    chart: radarr
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: radarr
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
