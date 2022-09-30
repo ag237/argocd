@@ -13,6 +13,7 @@ spec:
     repoURL: 'https://helm.traefik.io/traefik'
     targetRevision: 10.29.0
     helm:
+      skipCrds: true
       values: |
         deployment:
           kind: DaemonSet
