@@ -45,7 +45,7 @@ spec:
                 enabled: true
           dashboard:
             enabled: true
-            ssl: true
+            ssl: false
           crashCollector:
             disable: false
           cleanupPolicy:
@@ -145,25 +145,15 @@ spec:
               osd:
                 disabled: false
         ingress:
-          dashboard: {}
-            # annotations:
-            #   external-dns.alpha.kubernetes.io/hostname: dashboard.example.com
-            #   nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
-            #   kubernetes.io/ingress.class: nginx
-            # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
-            #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-            #   nginx.ingress.kubernetes.io/server-snippet: |
-            #     proxy_ssl_verify off;
-            # host:
-            #   name: dashboard.example.com
-            #   path: "/ceph-dashboard(/|$)(.*)"
-            # tls:
-            # - hosts:
-            #     - dashboard.example.com
-            #   secretName: testsecret-tls
-            ## Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
-            ## to set the ingress class
-            # ingressClassName: nginx
+          dashboard:
+            annotations:
+              kubernetes.io/ingress.class: traefik
+              traefik.ingress.kubernetes.io/router.entrypoints: websecure
+              traefik.ingress.kubernetes.io/router.tls: "true"
+              traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+            host:
+              name: rook-dashboard.chowned.net
+            tls: {}
         cephBlockPools:
           - name: rook-ceph-block
             spec:
