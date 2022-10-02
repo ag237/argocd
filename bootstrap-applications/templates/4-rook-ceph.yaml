@@ -16,6 +16,7 @@ spec:
       values: |
         resources:
           limits:
+            cpu: null
             memory: 256Mi
           requests:
             cpu: 200m
