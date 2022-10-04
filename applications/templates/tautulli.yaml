@@ -43,6 +43,14 @@ spec:
               nfs:
                 server: 192.168.1.28
                 path: "/plexmediaserver/Library/Application Support/Plex Media Server/Logs"
+          backups:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.1.22
+                path: /datastore/arr_backups/tautulli
+            mountPath: /config/Backups
             mountPath: /logs
         podSecurityContext:
           runAsUser: 568
