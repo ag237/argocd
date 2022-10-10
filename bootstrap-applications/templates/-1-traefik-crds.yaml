@@ -18,6 +18,7 @@ spec:
     targetRevision: v12.0.7
     directory:
       recurse: true
+      exclude: 'kustomization.yaml'
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
