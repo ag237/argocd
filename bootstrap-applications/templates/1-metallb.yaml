@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://metallb.github.io/metallb'
-    targetRevision: 0.13.5
+    targetRevision: 0.13.6
     helm:
       values: |
         prometheus:
