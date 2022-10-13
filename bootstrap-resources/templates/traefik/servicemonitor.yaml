@@ -9,7 +9,7 @@ spec:
   endpoints:
   - interval: 10s
     path: /metrics
-    port: traefik
+    port: metrics
   namespaceSelector:
     matchNames:
     - traefik
