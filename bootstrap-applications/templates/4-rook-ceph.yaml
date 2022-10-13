@@ -14,6 +14,7 @@ spec:
     targetRevision: v1.10.3
     helm:
       values: |
+        pspEnable: false
         resources:
           limits:
             cpu: null
