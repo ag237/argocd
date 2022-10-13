@@ -75,7 +75,7 @@ spec:
                 revision: 1
               traefik:
                 datasource: Prometheus
-                gnetId: 11462
+                gnetId: 4475
                 revision: 1
           ingress:
             enabled: true
