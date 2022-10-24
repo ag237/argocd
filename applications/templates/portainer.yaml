@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: portainer
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://portainer.github.io/k8s/'
+    targetRevision: 1.0.35
+    helm:
+      values: |
+        image:
+          repository: portainer/portainer-ce
+          tag: 2.15.1
+        service:
+          type: ClusterIP
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: traefik
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.tls: "true"
+            traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+          hosts:
+            - host: portainer-new.chowned.net
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls: {}
+    chart: portainer
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: portainer
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
