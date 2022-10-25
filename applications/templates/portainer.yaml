@@ -27,7 +27,7 @@ spec:
             traefik.ingress.kubernetes.io/router.tls: "true"
             traefik.ingress.kubernetes.io/router.middlewares: chowned@file
           hosts:
-            - host: portainer-new.chowned.net
+            - host: portainer.chowned.net
               paths:
                 - path: /
                   pathType: Prefix
