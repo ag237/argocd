@@ -73,5 +73,3 @@ argo-cd:
       requests:
         cpu: 50m
         memory: 64Mi
-    service:
-      type: NodePort
