@@ -72,17 +72,17 @@ data:
         visible_library: true
         visible_home: true
         visible_shared: true
-      Popular:
-        trakt_list: https://trakt.tv/users/hdlists/lists/top-films-everyone-s-watching
-        sort_title: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++2_Everyones Watching
+      Trending Movies:
+        mdblist_list: https://mdblist.com/lists/agentgreen/top-20-most-popular-movies-this-week
+        sort_title: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++2_Trending
         sync_mode: sync
         smart_label: year.desc
-        summary: Movies That Everyone is Watching
+        summary: Top 20 Trending Movies
         radarr_add: true
         radarr_search: true
         radarr_monitor: true
-        item_radarr_tag: pmm,movies_people_are_watching
-        url_poster: https://i.imgur.com/GQca9tU.png
+        item_radarr_tag: pmm,top_20_trending
+        url_poster: https://theposterdb.com/api/assets/213570
         visible_library: true
         visible_home: true
         visible_shared: true
@@ -107,7 +107,6 @@ data:
         sort_title: +++++++++++++++++++_3Top Rated
         sync_mode: sync
         summary: IMDB Top Rated Movies
-        url_background: https://i.imgur.com/b26VZ9y.jpg
         url_poster: https://i.redd.it/gkfygy4k3tr21.jpg
         radarr_add: true
         radarr_search: true
