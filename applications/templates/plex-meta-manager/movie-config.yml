@@ -77,11 +77,11 @@ data:
         sort_title: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++2_Trending
         sync_mode: sync
         smart_label: year.desc
-        summary: Top 20 Trending Movies
+        summary: Trending Movies
         radarr_add: true
         radarr_search: true
         radarr_monitor: true
-        item_radarr_tag: pmm,top_20_trending
+        item_radarr_tag: pmm,trending
         url_poster: https://theposterdb.com/api/assets/213570
         visible_library: true
         visible_home: true
