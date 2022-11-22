@@ -21,15 +21,5 @@
   },
   "argocd": {
     "fileMatch": ["applications/.+\\.yaml$"]
-  },
-  "regexManagers": [
-    {
-      "fileMatch": ["bootstrap-applications/templates/-1-kube-prometheus-stack-crds.yaml$"],
-      "matchStrings": [
-        "repoURL: (?<depName>.*?)\\n'",
-        "targetRevision: .*\\D-(?<currentValue>.*?)\\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}git-tags{{/if}}"
-    }
-  ]
+  }
 }
