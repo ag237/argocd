@@ -25,7 +25,10 @@
   "regexManagers": [
     {
       "fileMatch": ["bootstrap-applications/templates/-1-kube-prometheus-stack-crds.yaml$"],
-      "matchStrings": ["targetRevision: (?<depName>.*\\D?)-(?<currentValue>.*?)\\n"],
+      "matchStrings": [
+        "repoURL: (?<depName>.*?)\\n'",
+        "targetRevision: .*\\D-(?<currentValue>.*?)\\n"
+      ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}git-tags{{/if}}"
     }
   ]
