@@ -32,7 +32,8 @@
       "matchStrings": [
         "targetRevision: .*\\D-(?<currentValue>.*)\\n"
       ],
-      "depNameTemplate": "https://prometheus-community.github.io/helm-charts"
+      "datasourceTemplate": "git-tags",
+      "depNameTemplate": "https://prometheus-community.github.io/helm-charts",
     }
   ]
 }
