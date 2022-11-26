@@ -1,4 +1,5 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
     ":disableRateLimiting"
@@ -22,14 +23,16 @@
   "argocd": {
     "fileMatch": ["applications/.+\\.yaml$"]
   },
+  "helm-values": {
+    "fileMatch": ["applications/.+\\.yaml$"]
+  },
   "regexManagers": [
     {
       "fileMatch": ["bootstrap-applications/templates/-1-kube-prometheus-stack-crds.yaml$"],
       "matchStrings": [
-        "repoURL: (?<depName>.*?)\\n'",
-        "targetRevision: .*\\D-(?<currentValue>.*?)\\n"
+        "targetRevision: .*\\D-(?<currentValue>.*)\\n"
       ],
-      "datasourceTemplate": "git-tags",
+      "datasourceTemplate": "github-releases",
       "registryUrlTemplate": "https://prometheus-community.github.io/helm-charts"
     }
   ]
