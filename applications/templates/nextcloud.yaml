@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://nextcloud.github.io/helm/'
+    targetRevision: 3.3.3
+    helm:
+      values: |
+        image:
+          repository: nextcloud
+          tag: 25.0.1-apache
+          pullPolicy: IfNotPresent
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: traefik
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.tls: "true"
+            traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+            hosts:
+              - host: nextcloud.chowned.net
+                paths:
+                  - path: /
+                    pathType: Prefix
+            tls: {}
+        nextcloud:
+          host: nextcloud.chowned.net
+
+    chart: nextcloud
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: nextcloud
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
