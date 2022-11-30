@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://github.com/traefik/traefik-helm-chart.git
     path: traefik/crds
-    targetRevision: v20.5.3
+    targetRevision: v20.6.0
     directory:
       recurse: true
       exclude: 'kustomization.yaml'
