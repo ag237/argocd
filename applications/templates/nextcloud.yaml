@@ -14,8 +14,8 @@ spec:
       values: |
         image:
           repository: nextcloud
-          tag: 25.0.1-fpm-alpine
-          flavor: fpm-alpine
+          # tag: 25.0.1-fpm-alpine
+          # flavor: fpm-alpine
           pullPolicy: IfNotPresent
         ingress:
           enabled: true
