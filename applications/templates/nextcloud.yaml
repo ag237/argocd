@@ -44,7 +44,7 @@ spec:
                 path: "/datastore/nextcloud/data"
           extraVolumeMounts:
             - name: datastore
-              mountPath: /var/www/html/data
+              mountPath: /data
         nginx:
           enabled: true
           image:
