@@ -45,11 +45,8 @@ spec:
           extraVolumeMounts:
             - name: datastore
               mountPath: /data
-        nginx:
-          enabled: true
-          image:
-            repository: nginx
-            tag: 1.23-alpine
+        # nginx:
+        #   enabled: true
         internalDatabase:
           enabled: false
         postgresql:
