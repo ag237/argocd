@@ -81,6 +81,8 @@ spec:
           enabled: true      
         persistence:
           enabled: true
+        phpClientHttpsFix:
+          enabled: true
         resources:
           limits:
             memory: 256Mi
