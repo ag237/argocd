@@ -30,6 +30,13 @@ spec:
                 - path: /
                   pathType: Prefix
           tls: {}
+        externalDatabase:
+          enabled: false
+          existingSecret:
+            enabled: true
+            secretName: nextcloud-secrets
+            usernameKey: nextcloud-username
+            passwordKey: postgres-nextcloud-password
         nextcloud:
           host: nextcloud.chowned.net
           existingSecret:
