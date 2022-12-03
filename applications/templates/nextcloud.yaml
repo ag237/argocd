@@ -24,12 +24,12 @@ spec:
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.tls: "true"
             traefik.ingress.kubernetes.io/router.middlewares: chowned@file
-            hosts:
-              - host: nextcloud.chowned.net
-                paths:
-                  - path: /
-                    pathType: Prefix
-            tls: {}
+          hosts:
+            - host: nextcloud.chowned.net
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls: {}
         nextcloud:
           host: nextcloud.chowned.net
           existingSecret:
@@ -37,37 +37,6 @@ spec:
             secretName: nextcloud-secrets
             usernameKey: nextcloud-username
             passwordKey: nextcloud-password
-          extraInitContainers:
-          #     - name: wait-database
-          #       image: alpine:3.17.0
-          #       imagePullPolicy: IfNotPresent
-          #       command:
-          #         - sh
-          #       args:
-          #         - -c
-          #         - >-
-          #           until nc -w 1 -v $MYSQL_HOST:3306 || nc -w 1 -v $POSTGRES_HOST:5432;
-          #           do echo "Waiting for database";
-          #           done
-          #       env:
-          #         - name: POSTGRES_HOST
-          #           value: pgo-cluster-primary.default.svc
-            - name: wait-redis
-              image: alpine:3.17.0
-              imagePullPolicy: IfNotPresent
-              command:
-                - sh
-              args:
-                - -c
-                - >-
-                  until nc -w 1 -v $REDIS_HOST:$REDIS_HOST_PORT;
-                  do echo "Waiting for Redis";
-                  done
-              env:
-                - name: REDIS_HOST
-                  value: redis
-                - name: REDIS_HOST_PORT
-                  value: "6379"
           extraVolumes:
             - name: datastore
               nfs:
