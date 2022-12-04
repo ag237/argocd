@@ -74,7 +74,7 @@ spec:
         redis:
           enabled: false
           auth:
-            enabled: true
+            enabled: false
             existingSecret: "nextcloud-secrets"
             existingSecretPasswordKey: "redis-password"
         cronjob:
