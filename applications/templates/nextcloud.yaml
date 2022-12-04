@@ -14,8 +14,8 @@ spec:
       values: |
         image:
           repository: nextcloud
-          # tag: 25.0.1-fpm-alpine
-          # flavor: fpm-alpine
+          tag: 25.0.1-fpm-alpine
+          flavor: fpm-alpine
           pullPolicy: IfNotPresent
         ingress:
           enabled: true
@@ -52,8 +52,8 @@ spec:
           extraVolumeMounts:
             - name: datastore
               mountPath: /data
-        # nginx:
-        #   enabled: true
+        nginx:
+          enabled: true
         internalDatabase:
           enabled: false
         postgresql:
@@ -72,7 +72,7 @@ spec:
               enabled: true
               size: 50Gi
         redis:
-          enabled: true
+          enabled: false
           auth:
             enabled: true
             existingSecret: "nextcloud-secrets"
