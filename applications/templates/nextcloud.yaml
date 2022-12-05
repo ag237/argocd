@@ -73,7 +73,7 @@ spec:
               enabled: true
               size: 50Gi
         redis:
-          enabled: true
+          enabled: false
           auth:
             enabled: true
             existingSecret: "nextcloud-secrets"
