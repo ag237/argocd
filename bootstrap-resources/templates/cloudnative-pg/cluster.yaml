@@ -1,0 +1,31 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:15.1
+  instances: 3
+  primaryUpdateStrategy: unsupervised
+  bootstrap:
+    initdb:
+      database: nextcloud
+      owner: nextcloud
+      secret:
+        name: nextcloud-auth
+  superuserSecret:
+    name: postgres-auth
+  storage:
+    storageClass: rook-ceph-block
+    size: 50Gi
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+  affinity:
+    enablePodAntiAffinity: true
+    topologyKey: kubernetes.io/hostname
+  nodeMaintenanceWindow:
+    inProgress: false
+    reusePVC: true
