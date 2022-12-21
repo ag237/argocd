@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://charts.rook.io/release'
-    targetRevision: v1.10.7
+    targetRevision: v1.10.8
     helm:
       values: |
         toolbox:
