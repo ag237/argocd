@@ -16,7 +16,7 @@ spec:
           TZ: America/New_York
         image:
           repository: ghcr.io/onedr0p/radarr
-          tag: 4.2.4.6635
+          tag: 4.3.2.6857
         ingress:
           main:
             enabled: true
