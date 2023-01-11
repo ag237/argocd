@@ -1,6 +1,6 @@
 dependencies:
 - name: vertical-pod-autoscaler
   repository: https://cowboysysop.github.io/charts/
-  version: 6.0.2
-digest: sha256:3ad52cd24057fb98b31849bd7b67dcda49ced578b8aa33a40233bce0d3e0d570
-generated: "2022-12-15T23:48:18.419662037Z"
+  version: 6.0.3
+digest: sha256:379fb0d0b4afaa45b8066ea1e36d995d4c36c70156f719d8285f7ece6fa0c204
+generated: "2023-01-11T00:17:26.824969103Z"
