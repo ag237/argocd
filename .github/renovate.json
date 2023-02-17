@@ -4,7 +4,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
-  "enabledManagers": [ "argocd", "helmv3", "kubernetes"],
+  "enabledManagers": [ "argocd", "helmv3", "kubernetes", "regex" ],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
