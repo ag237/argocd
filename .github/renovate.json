@@ -4,7 +4,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
-  "enabledManagers": [ "argocd", "helmv3"],
+  "enabledManagers": [ "argocd", "helmv3", "kubernetes"],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
@@ -20,5 +20,8 @@
   ],
   "argocd": {
     "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ]
+  },
+  "kubernetes": {
+    "fileMatch": [ "applications/templates/plex-meta-manager/cronjob\\.yaml$"]
   }
 }
