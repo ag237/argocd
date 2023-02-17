@@ -4,7 +4,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
-  "enabledManagers": [ "argocd", "helm-values" ],
+  "enabledManagers": [ "argocd" ],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
@@ -16,15 +16,9 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
       "automergeType": "pr"
-    },
-    {
-      "matchManagers": [
-        "argocd"
-      ],
-      "matchPaths": [
-        "applications/templates/**",
-        "bootstrap-applications/templates/**"
-      ]
     }
-  ]
+  ],
+  "argocd": {
+    "fileMatch": [ "applications/templates/**", "bootstrap-applications/templates/**" ]
+  }
 }
