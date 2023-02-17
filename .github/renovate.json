@@ -4,6 +4,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
+  "enabledManagers": [ "argocd", "helm-values" ],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
@@ -15,25 +16,15 @@
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
       "automergeType": "pr"
-    }
-  ],
-  "kubernetes": {
-    "fileMatch": ["\\.yaml$"]
-  },
-  "argocd": {
-    "fileMatch": ["applications/.+\\.yaml$"]
-  },
-  "helm-values": {
-    "fileMatch": ["applications/.+\\.yaml$"]
-  },
-  "regexManagers": [
+    },
     {
-      "fileMatch": ["bootstrap-applications/templates/-1-kube-prometheus-stack-crds.yaml$"],
-      "matchStrings": [
-        "targetRevision: .*\\D-(?<currentValue>.*)\\n"
+      "matchManagers": [
+        "argocd"
       ],
-      "datasourceTemplate": "git-tags",
-      "depNameTemplate": "https://github.com/prometheus-community/helm-charts.git"
+      "matchPaths": [
+        "applications/templates/**",
+        "bootstrap-applications/templates/**"
+      ]
     }
   ]
 }
