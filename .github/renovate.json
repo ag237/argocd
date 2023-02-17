@@ -4,7 +4,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
-  "enabledManagers": [ "argocd", "helmv3", "kubernetes", "regex" ],
+  "enabledManagers": [ "argocd", "helmv3", "kubernetes", "regex", "helm-values"],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
@@ -19,6 +19,9 @@
     }
   ],
   "argocd": {
+    "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ]
+  },
+  "helm-values": {
     "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ]
   },
   "kubernetes": {
