@@ -23,5 +23,15 @@
   },
   "kubernetes": {
     "fileMatch": [ "applications/templates/plex-meta-manager/cronjob\\.yaml$"]
-  }
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["bootstrap-applications/templates/-1-kube-prometheus-stack-crds\\.yaml$"],
+      "matchStrings": [
+        "targetRevision: .*\\D-(?<currentValue>.*)\\n"
+      ],
+      "datasourceTemplate": "git-tags",
+      "depNameTemplate": "https://github.com/prometheus-community/helm-charts.git"
+    }
+  ]
 }
