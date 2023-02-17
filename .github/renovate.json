@@ -19,6 +19,6 @@
     }
   ],
   "argocd": {
-    "fileMatch": [ "applications/templates/**", "bootstrap-applications/templates/**" ]
+    "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ]
   }
 }
