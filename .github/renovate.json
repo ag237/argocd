@@ -4,7 +4,7 @@
     "config:base",
     ":disableRateLimiting"
   ],
-  "enabledManagers": [ "argocd", "helmv3", "kubernetes", "regex", "helm-values"],
+  "enabledManagers": [ "argocd", "helmv3", "kubernetes", "regex"],
   "ignoreTests": true,
   "lockFileMaintenance": {
     "enabled": true,
@@ -21,9 +21,6 @@
   "argocd": {
     "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ]
   },
-  "helm-values": {
-    "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ]
-  },
   "kubernetes": {
     "fileMatch": [ "applications/templates/plex-meta-manager/cronjob\\.yaml$"]
   },
@@ -34,7 +31,15 @@
         "targetRevision: .*\\D-(?<currentValue>.*)\\n"
       ],
       "datasourceTemplate": "git-tags",
-      "depNameTemplate": "https://github.com/prometheus-community/helm-charts.git"
+      "depNameTemplate": "https://prometheus-community.github.io/helm-charts"
+    },
+    {
+      "description": "k8s-at-home chart inline image updates",
+      "fileMatch": [ "applications/templates/.+\\.yaml$", "bootstrap-applications/templates/.+\\.yaml$" ],
+      "matchStrings": [
+        "repository: (?<depName>.*)\\s*tag: (?<currentValue>.*)"
+      ],
+      "datasourceTemplate": "docker"
     }
   ]
 }
