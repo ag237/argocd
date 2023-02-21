@@ -7,32 +7,32 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: 500m
+        cpu: null
         memory: 1024Mi
       requests:
         cpu: 250m
-        memory: 256Mi
+        memory: 1024Mi
 
   dex:
     metrics:
       enabled: true
     resources:
       limits:
-        cpu: 50m
+        cpu: null
         memory: 64Mi
       requests:
         cpu: 10m
-        memory: 32Mi
+        memory: 64Mi
 
   redis-ha:
     enabled: true
     resources:
       limits:
-        cpu: 200m
+        cpu: null
         memory: 128Mi
       requests:
         cpu: 100m
-        memory: 64Mi
+        memory: 128Mi
     metrics:
       enabled: true
 
@@ -50,11 +50,11 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: 500m
+        cpu: null
         memory: 1024Mi
       requests:
         cpu: 10m
-        memory: 64Mi
+        memory: 1024Mi
 
   server:
     autoscaling:
@@ -68,8 +68,8 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: 500m
+        cpu: null
         memory: 128Mi
       requests:
         cpu: 50m
-        memory: 64Mi
+        memory: 128Mi
