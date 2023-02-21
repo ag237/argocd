@@ -7,7 +7,6 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: null
         memory: 1024Mi
       requests:
         cpu: 250m
@@ -18,7 +17,6 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: null
         memory: 64Mi
       requests:
         cpu: 10m
@@ -28,7 +26,6 @@ argo-cd:
     enabled: true
     resources:
       limits:
-        cpu: null
         memory: 128Mi
       requests:
         cpu: 100m
@@ -50,7 +47,6 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: null
         memory: 1024Mi
       requests:
         cpu: 10m
@@ -68,7 +64,6 @@ argo-cd:
       enabled: true
     resources:
       limits:
-        cpu: null
         memory: 128Mi
       requests:
         cpu: 50m
