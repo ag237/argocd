@@ -1,4 +1,9 @@
 argo-cd:
+
+  configs:
+    cm:
+      helm.enabled: true
+
   controller:
     args:
       repoServerTimeoutSeconds: "180"
