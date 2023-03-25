@@ -3,6 +3,7 @@ argo-cd:
   configs:
     cm:
       helm.enabled: true
+      kustomize.buildOptions: --enable-helm
 
   controller:
     args:
