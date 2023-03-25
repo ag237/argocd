@@ -1,0 +1,7 @@
+resources:
+- ./base
+
+namespace: homepage
+
+patchesStrategicMerge:
+  - deployment.yaml
