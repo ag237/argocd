@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage
+spec:
+  template:
+    spec:
+      volumes:
+        - $patch: delete
+          configMap:
+            name: test
+        - name: homepage-config
+          secret:
+            secretName: homepage-config
+        - emptyDir: {}
+          name: logs

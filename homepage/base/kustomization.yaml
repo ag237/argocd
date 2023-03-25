@@ -1,0 +1,38 @@
+resources:
+  - "homepage-config-sealedsecret.yaml"
+  
+helmCharts:
+- name: homepage
+  namespace: homepage
+  includeCRDs: false
+  valuesInline:
+    config:
+      useExistingConfigMap: fail
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/name: "Homepage"
+          gethomepage.dev/description: "Dynamically Detected Homepage"
+          gethomepage.dev/group: "Dynamic"
+          gethomepage.dev/icon: "homepage.png"
+          kubernetes.io/ingress.class: traefik
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.tls: "true"
+          traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+        hosts:
+          - host: homepage.chowned.net
+            paths:
+              - path: /
+                pathType: Prefix
+    # The service account is necessary to allow discovery of other services
+    serviceAccount:
+      create: true
+      name: homepage
+
+    # This enables the service account to access the necessary resources
+    enableRbac: true
+  releaseName: homepage
+  version: 1.1.1
+  repo: http://jameswynn.github.io/helm-charts
