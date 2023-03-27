@@ -8,6 +8,8 @@ helmCharts:
   valuesInline:
     config:
       useExistingConfigMap: fail
+    env:
+      LOG_LEVEL: debug
     ingress:
       main:
         enabled: true
