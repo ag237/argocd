@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://helm.traefik.io/traefik'
-    targetRevision: 21.2.0
+    targetRevision: 21.2.1
     helm:
       skipCrds: true
       values: |
