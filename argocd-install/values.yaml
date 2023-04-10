@@ -66,6 +66,7 @@ argo-cd:
       targetMemoryUtilizationPercentage: 125
     extraArgs:
     - --insecure
+    - --enable-gzip
     metrics:
       enabled: true
     resources:
