@@ -87,7 +87,7 @@ data:
         visible_home: true
         visible_shared: true
       Top Ten Pirated Weekly:
-        trakt_list: https://trakt.tv/users/hdlists/lists/top-ten-pirated-movies-of-the-week-torrent-freak-com
+        trakt_list: https://mdblist.com/lists/hdlists/top-ten-pirated-movies-of-the-week-torrent-freak-com
         smart_label: year.desc
         sync_mode: sync
         sort_title: +++++++++++++++++++++++++_1APirated Weekly
