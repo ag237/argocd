@@ -16,7 +16,7 @@ spec:
           TZ: America/New_York
         image:
           repository: ghcr.io/onedr0p/lidarr-develop
-          tag: 1.2.5.3288
+          tag: 1.2.6.3313
 
         ingress:
           main:
