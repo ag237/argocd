@@ -14,7 +14,7 @@ spec:
             - name: renovate
               # Update this to the latest available and then enable Renovate on
               # the manifest
-              image: renovate/renovate:36.16.0
+              image: renovate/renovate:36.17.0
               args:
                 - ag237/argocd
                 - ag237/portainer
