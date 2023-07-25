@@ -81,6 +81,7 @@ data:
         radarr_add: true
         radarr_search: true
         radarr_monitor: true
+        radarr_tag: pmm,trending
         item_radarr_tag: pmm,trending
         url_poster: https://theposterdb.com/api/assets/213570
         visible_library: true
@@ -95,6 +96,7 @@ data:
         radarr_add: true
         radarr_search: true
         radarr_monitor: true
+        radarr_tag: pmm,top_ten_pirated_weekly
         item_radarr_tag: pmm,top_ten_pirated_weekly
         url_background: https://i.imgur.com/SOVfrIq.png
         url_poster: https://i.imgur.com/dYdjSOu.png
@@ -112,7 +114,7 @@ data:
         radarr_search: true
         radarr_monitor: true
         radarr_tag: pmm,imdb_top_250
-        item_radarr_tag: still_in_imdb250
+        item_radarr_tag: pmm,imdb_top_250,still_in_imdb250
         visible_library: true
     ###########################
     #    Genre Collections    #
