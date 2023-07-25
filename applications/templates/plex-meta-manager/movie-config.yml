@@ -111,7 +111,8 @@ data:
         radarr_add: true
         radarr_search: true
         radarr_monitor: true
-        item_radarr_tag: pmm,imdb_top_250
+        radarr_tag: pmm,imdb_top_250
+        item_radarr_tag: still_in_imdb250
         visible_library: true
     ###########################
     #    Genre Collections    #
