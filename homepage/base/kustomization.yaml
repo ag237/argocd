@@ -14,6 +14,8 @@ helmCharts:
     enableRbac: true
     env:
       LOG_LEVEL: debug
+    image:
+      tag: v0.6.28
     ingress:
       main:
         annotations:
