@@ -31,5 +31,5 @@ helmCharts:
     # This enables the service account to access the necessary resources
     enableRbac: true
   releaseName: homepage
-  version: 1.2.0
+  version: 1.26.1
   repo: http://jameswynn.github.io/helm-charts
