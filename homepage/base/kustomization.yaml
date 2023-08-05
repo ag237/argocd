@@ -1,35 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 resources:
-  - "homepage-config-sealedsecret.yaml"
-  
+- homepage-config-sealedsecret.yaml
+
 helmCharts:
 - name: homepage
   namespace: homepage
-  includeCRDs: false
+  releaseName: homepage
+  repo: http://jameswynn.github.io/helm-charts
   valuesInline:
     config:
       useExistingConfigMap: fail
+    enableRbac: true
     env:
       LOG_LEVEL: debug
     ingress:
       main:
-        enabled: true
         annotations:
           kubernetes.io/ingress.class: traefik
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.tls: "true"
           traefik.ingress.kubernetes.io/router.middlewares: chowned@file
+          traefik.ingress.kubernetes.io/router.tls: "true"
+        enabled: true
         hosts:
-          - host: homepage.chowned.net
-            paths:
-              - path: /
-                pathType: Prefix
-    # The service account is necessary to allow discovery of other services
+        - host: homepage.chowned.net
+          paths:
+          - path: /
+            pathType: Prefix
     serviceAccount:
       create: true
       name: homepage
-
-    # This enables the service account to access the necessary resources
-    enableRbac: true
-  releaseName: homepage
   version: 1.26.1
-  repo: http://jameswynn.github.io/helm-charts
