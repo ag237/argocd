@@ -141,7 +141,10 @@ data:
         template: {name: Genre, genre: Crime, poster: https://theposterdb.com/api/assets/53057}
         summary: Crime film is a genre that revolves around the action of a criminal mastermind. A Crime film will often revolve around the criminal himself, chronicling his rise and fall. Some Crime films will have a storyline that follows the criminal's victim, yet others follow the person in pursuit of the criminal. This genre tends to be fast paced with an air of mystery – this mystery can come from the plot or from the characters themselves.
       Disaster:
-        template: {name: Genre, genre: Disaster, poster: https://i.redd.it/fhrle0lxlef51.jpg}
+        template: {name: Special Genre, poster: https://i.redd.it/fhrle0lxlef51.jpg}
+        sort_title: +++++++_Disaster
+        imdb_list:
+          - https://www.imdb.com/list/ls022679275/
         summary: The disaster movie genre is a cinematic category that focuses on depicting catastrophic events and their aftermaths, often involving large-scale destruction, danger, and chaos.  
       Documentary:
         template: {name: Genre, genre: Documentary, poster: https://theposterdb.com/api/assets/51430}
