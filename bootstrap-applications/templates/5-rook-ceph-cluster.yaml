@@ -112,6 +112,13 @@ spec:
               requests:
                 cpu: "500m"
                 memory: "1Gi"
+            exporter:
+              limits:
+                cpu: null
+                memory: "128Mi"
+              requests:
+                cpu: "50m"
+                memory: "50Mi"
           removeOSDsIfOutAndSafeToRemove: false
           priorityClassNames:
             mon: system-node-critical
