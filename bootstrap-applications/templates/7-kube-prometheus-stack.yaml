@@ -154,7 +154,7 @@ spec:
               name: prometheus-additional-scrape-configs
               key: prometheus-additional-scrape-configs.yaml
             externalUrl: "https://prometheus-k8s.chowned.net"
-            retention: 90d
+            retention: 182d
             serviceMonitorSelectorNilUsesHelmValues: false
             storageSpec:
               volumeClaimTemplate:
