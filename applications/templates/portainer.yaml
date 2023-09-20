@@ -16,7 +16,7 @@ spec:
           enabled: true
         image:
           repository: portainer/portainer-ee
-          tag: 2.19.0
+          tag: 2.19.1
         service:
           type: ClusterIP
         ingress:
