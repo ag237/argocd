@@ -87,22 +87,6 @@ data:
         visible_library: true
         visible_home: true
         visible_shared: true
-      Top Ten Pirated Weekly:
-        trakt_list: https://mdblist.com/lists/hdlists/top-ten-pirated-movies-of-the-week-torrent-freak-com
-        smart_label: year.desc
-        sync_mode: sync
-        sort_title: +++++++++++++++++++++++++_1APirated Weekly
-        summary: Most Pirated Movies of The Week
-        radarr_add: true
-        radarr_search: true
-        radarr_monitor: true
-        radarr_tag: pmm,top_ten_pirated_weekly
-        item_radarr_tag: pmm,top_ten_pirated_weekly
-        url_background: https://i.imgur.com/SOVfrIq.png
-        url_poster: https://i.imgur.com/dYdjSOu.png
-        visible_library: false
-        visible_home: false
-        visible_shared: false
       IMDB Top 250 Best Rated Movies:
         imdb_chart: top_movies
         collection_order: custom
