@@ -16,7 +16,7 @@ spec:
           TZ: America/New_York
         image:
           repository: ghcr.io/onedr0p/prowlarr-develop
-          tag: 1.10.5.4116
+          tag: 1.11.0.4128
         ingress:
           main:
             enabled: true
