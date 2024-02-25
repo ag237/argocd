@@ -70,8 +70,8 @@ data:
         radarr_tag: pmm,trending
         item_radarr_tag: pmm,trending
         url_poster: https://theposterdb.com/api/assets/213570
-        visible_library: true
-        visible_home: true
+        visible_library: false
+        visible_home: false
         visible_shared: true
 
     ###########################
