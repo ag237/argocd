@@ -58,20 +58,6 @@ data:
         collection_order: release
 
     collections:
-      Popular on Plex:
-        template: { name: Chart, num: 1, poster: https://theposterdb.com/api/assets/136359 }
-        tautulli_popular:
-          list_days: 30
-          list_size: 20
-          list_buffer: 20
-        tautulli_watched:
-          list_days: 30
-          list_size: 20
-          list_buffer: 20
-        summary: Movies Popular on Plex
-        visible_library: true
-        visible_home: true
-        visible_shared: true
       Trending Movies:
         mdblist_list: https://mdblist.com/lists/agentgreen/top-20-most-popular-movies-this-week
         sort_title: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++2_Trending
@@ -87,19 +73,7 @@ data:
         visible_library: true
         visible_home: true
         visible_shared: true
-      IMDB Top 250 Best Rated Movies:
-        imdb_chart: top_movies
-        collection_order: custom
-        sort_title: +++++++++++++++++++_3Top Rated
-        sync_mode: sync
-        summary: IMDB Top Rated Movies
-        url_poster: https://i.redd.it/gkfygy4k3tr21.jpg
-        radarr_add: true
-        radarr_search: true
-        radarr_monitor: true
-        radarr_tag: pmm,imdb_top_250
-        item_radarr_tag: pmm,imdb_top_250,still_in_imdb250
-        visible_library: true
+
     ###########################
     #    Genre Collections    #
     ###########################
@@ -228,64 +202,4 @@ data:
       Western:
         template: {name: Genre, genre: Western, poster: https://theposterdb.com/api/assets/51774}
         summary: "Western Film is a genre that revolves around stories primarily set in the late 19th century in the American Old West. Most Westerns are set between the American Civil War (1865) and the early 1900s. Common themes within Western Film include: the conquest of the wild west, the cultural separation of the East and the West, the West’s resistance to modern change, the conflict between Cowboys and Indians, outlaws, and treasure/gold hunting. American Western Film usually revolves around a stoic hero and emphasizes the importance of honor and sacrifice."
-    ###########################
-    #  Holliday Collections   #
-    ###########################
-      Christmas:
-        schedule: range(12/01-12/31)
-        template: {name: Holiday, poster: https://theposterdb.com/api/assets/69443}
-        sort_title: +++++_Christmas
-        trakt_list:
-          - https://trakt.tv/users/movistapp/lists/christmas-movies
-          - https://trakt.tv/users/2borno2b/lists/christmas-movies-extravanganza
-          - https://trakt.tv/users/pualani78/lists/christmas-2020
-          - https://trakt.tv/users/veninjak/lists/complete-christmas-2021-copy
-        imdb_list:
-          - https://www.imdb.com/list/ls025976544/
-          - https://www.imdb.com/list/ls003863000/
-          - https://www.imdb.com/list/ls027454200/
-          - https://www.imdb.com/list/ls027886673/
-          - https://www.imdb.com/list/ls097998599/
-        summary: Christmas film is a genre that revolves around the plot involving Christmas.
-      Halloween:
-        schedule: range(10/01-10/31)
-        sort_title: +++++_Halloween
-        template: {name: Holiday, poster: https://theposterdb.com/api/assets/111218}
-        trakt_list:
-          - https://trakt.tv/users/kairbear08/lists/halloween
-          - https://trakt.tv/users/mybicycle/lists/halloween
-          - https://trakt.tv/users/jayinftl/lists/halloween
-          - https://trakt.tv/users/roswellgeek/lists/halloween
-        summary: Halloween film is a genre that revolves around the plot involving Halloween.
-      New Year's Eve Movies:
-        schedule: range(12/26-01/05)
-        sort_title: +++++_New_Year
-        template: {name: Holiday, holiday: "New Year's Eve"}
-        imdb_list: https://www.imdb.com/list/ls066838460/
-      Valentine's Day Movies:
-        schedule: range(02/01-02/14)
-        sort_title: +++++_Valentine
-        template: {name: Holiday, holiday: "Valentine's Day"}
-        imdb_list:
-          - https://www.imdb.com/list/ls000094398/
-          - https://www.imdb.com/list/ls057783436/
-          - https://www.imdb.com/list/ls064427905/
-      St. Patrick's Day Movies:
-        schedule: range(03/01-03/17)
-        sort_title: +++++_St_Patrick
-        template: {name: Holiday, holiday: "St. Patrick's Day"}
-        imdb_list: https://www.imdb.com/list/ls063934595/
-      Thanksgiving Movies:
-        schedule: range(10/01-10/31)
-        sort_title: +++++_Thanksgiving
-        template: {name: Holiday, holiday: Thanksgiving, poster: https://theposterdb.com/api/assets/112251}
-        imdb_list: 
-          - https://www.imdb.com/list/ls000835734/
-          - https://www.imdb.com/list/ls091597850/
-      Easter Movies:
-        schedule: range(3/22-4/25)
-        sort_title: +++++_Easter
-        template: {name: Holiday, holiday: Easter, poster: https://theposterdb.com/api/assets/60970}
-        imdb_list: 
-          - https://www.imdb.com/list/ls062665509/
-          - https://www.imdb.com/list/ls051733651/
+  
