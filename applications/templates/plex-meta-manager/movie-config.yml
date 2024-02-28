@@ -17,15 +17,15 @@ data:
         url_poster: <<poster>>
         sort_title: +++++++_<<collection_name>>
         collection_order: alpha
-        visible_library: true
+        visible_library: false
       Holiday:
         url_poster: <<poster>>
         sort_title: +++++++_<<collection_name>>
         collection_order: release
         delete_not_scheduled: true
         run_again: true
-        visible_library: true
-        visible_home: true
+        visible_library: false
+        visible_home: false
         visible_shared: true
         sync_mode: sync
       Studio:
