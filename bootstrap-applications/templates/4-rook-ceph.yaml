@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://charts.rook.io/release'
-    targetRevision: v1.14.0
+    targetRevision: v1.14.1
     helm:
       values: |
         pspEnable: false
