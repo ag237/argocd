@@ -1,8 +1,8 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: plex-meta-manager
-  namespace: plex-meta-manager
+  name: kometa
+  namespace: kometa
 spec:
   schedule: "0 0 * * *"
   successfulJobsHistoryLimit: 3
@@ -17,7 +17,7 @@ spec:
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
           containers:
-            - name: plex-meta-manager
+            - name: kometa
               image: kometateam/kometa:v2.0.1
               imagePullPolicy: IfNotPresent
               args: [ "--run", "--read-only-config" ]
@@ -30,7 +30,7 @@ spec:
               volumeMounts:
                 - name: config
                   mountPath: /config
-                - name: pmm-config
+                - name: kometa-config
                   mountPath: /config/config.yml
                   subPath: config.yml
                 - name: movie-config
@@ -42,10 +42,10 @@ spec:
           volumes:
             - name: config
               persistentVolumeClaim:
-                claimName: plex-meta-manager
-            - name: pmm-config
+                claimName: kometa
+            - name: kometa-config
               secret:
-                secretName: pmm-config
+                secretName: kometa-config
             - configMap:
                 name: movie-config
               name: movie-config

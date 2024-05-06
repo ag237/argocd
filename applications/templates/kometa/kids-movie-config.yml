@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: kids-movie-config
-  namespace: plex-meta-manager
+  namespace: kometa
 data:
   kids-movie-config.yml: |
     templates:
