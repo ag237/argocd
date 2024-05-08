@@ -11,7 +11,7 @@ spec:
   project: default
   source:
     repoURL: 'https://charts.bitnami.com/bitnami'
-    targetRevision: 7.0.3
+    targetRevision: 7.0.4
     helm:
       values: |
         apiService:
