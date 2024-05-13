@@ -60,7 +60,7 @@ data:
     collections:
       Trending Movies:
         mdblist_list: https://mdblist.com/lists/agentgreen/top-20-most-popular-movies-this-week
-        sort_title: ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++2_Trending
+        sort_title: !Trending
         sync_mode: sync
         smart_label: year.desc
         summary: Trending Movies
@@ -99,7 +99,7 @@ data:
         template: {name: Genre, genre: Crime, poster: https://theposterdb.com/api/assets/53057}
         summary: Crime film is a genre that revolves around the action of a criminal mastermind. A Crime film will often revolve around the criminal himself, chronicling his rise and fall. Some Crime films will have a storyline that follows the criminal's victim, yet others follow the person in pursuit of the criminal. This genre tends to be fast paced with an air of mystery – this mystery can come from the plot or from the characters themselves.
       Disaster:
-        template: {name: Special Genre, poster: https://theposterdb.com/poster/164980}
+        template: {name: Special Genre, poster: https://theposterdb.com/api/assets/164980}
         mdblist_list: https://mdblist.com/lists/sigmund93/disaster-movies
         sort_title: +++++++_Disaster
         summary: The disaster movie genre is a cinematic category that focuses on depicting catastrophic events and their aftermaths, often involving large-scale destruction, danger, and chaos.  
