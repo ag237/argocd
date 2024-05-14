@@ -57,22 +57,24 @@ data:
         sort_title: <<collection_name>>
         collection_order: release
 
-    collections:
-      Trending Movies:
-        mdblist_list: https://mdblist.com/lists/agentgreen/top-20-most-popular-movies-this-week
-        sort_title: !Trending
-        sync_mode: sync
-        smart_label: year.desc
-        summary: Trending Movies
-        radarr_add: true
-        radarr_search: true
-        radarr_monitor: true
-        radarr_tag: kometa,trending
-        item_radarr_tag: kometa,trending
-        url_poster: https://theposterdb.com/api/assets/213570
-        visible_library: false
-        visible_home: false
-        visible_shared: false
+    # collections:
+    #   Trending Movies:
+    #     trakt_trending: 20
+    #     tmdb_trending_daily: 20
+    #     tmdb_trending_weekly: 20
+    #     sort_title: !Trending
+    #     sync_mode: sync
+    #     smart_label: year.desc
+    #     summary: Trending Movies
+    #     radarr_add: true
+    #     radarr_search: true
+    #     radarr_monitor: true
+    #     radarr_tag: kometa,trending
+    #     item_radarr_tag: kometa,trending
+    #     url_poster: https://theposterdb.com/api/assets/213570
+    #     visible_library: false
+    #     visible_home: false
+    #     visible_shared: false
 
     ###########################
     #    Genre Collections    #
