@@ -57,7 +57,7 @@ data:
         sort_title: <<collection_name>>
         collection_order: release
 
-    # collections:
+    collections:
     #   Trending Movies:
     #     trakt_trending: 20
     #     tmdb_trending_daily: 20
