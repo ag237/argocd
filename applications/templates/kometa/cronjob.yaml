@@ -4,7 +4,8 @@ metadata:
   name: kometa
   namespace: kometa
 spec:
-  schedule: "0 0 * * *"
+  schedule: "0 6 * * *"
+  timeZone: 'America/New_York'
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   jobTemplate:
