@@ -31,6 +31,8 @@ argo-cd:
   redis-ha:
     enabled: true
     replicas: 2
+    haproxy:
+      replicas: 2
     resources:
       limits:
         memory: 128Mi
