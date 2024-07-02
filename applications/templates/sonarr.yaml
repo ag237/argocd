@@ -16,7 +16,7 @@ spec:
           TZ: America/New_York
         image:
           repository: ghcr.io/onedr0p/sonarr
-          tag: 4.0.5.1710
+          tag: 4.0.6.1805
         ingress:
           main:
             enabled: true
